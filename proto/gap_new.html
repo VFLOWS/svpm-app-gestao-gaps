@@ -108,7 +108,7 @@
                 <form id="form-gap" class="flex flex-col gap-8">
                     <div class="grid grid-cols-2 gap-8">
                         <div class="flex flex-col gap-4">
-                            <label class="text-gray-700 text-base font-medium">Risk Level</label>
+                            <label class="text-gray-700 text-base font-medium">Risk Level <span class="text-error">*</span></label>
                             <select class="border border-border rounded-lg px-4 py-3 text-gray-700 bg-secondary focus:outline-none focus:ring-2 focus:ring-primary text-base">
                                 <option value="">Select risk level</option>
                                 <option value="low">Low</option>
@@ -118,7 +118,7 @@
                             </select>
                         </div>
                         <div class="flex flex-col gap-4">
-                            <label class="text-gray-700 text-base font-medium">Recurrence</label>
+                            <label class="text-gray-700 text-base font-medium">Recurrence <span class="text-error">*</span></label>
                             <select class="border border-border rounded-lg px-4 py-3 text-gray-700 bg-secondary focus:outline-none focus:ring-2 focus:ring-primary text-base">
                                 <option value="">Select recurrence</option>
                                 <option value="one-time">One-time</option>
@@ -128,12 +128,12 @@
                         </div>
                     </div>
                     <div class="flex flex-col gap-4">
-                        <label class="text-gray-700 text-base font-medium">GAP Description</label>
+                        <label class="text-gray-700 text-base font-medium">GAP Description <span class="text-error">*</span></label>
                         <textarea rows="3" class="border border-border rounded-lg px-4 py-3 text-gray-700 bg-secondary focus:outline-none focus:ring-2 focus:ring-primary text-base resize-none"></textarea>
                     </div>
                     <div class="grid grid-cols-2 gap-8">
                         <div class="flex flex-col gap-4">
-                            <label class="text-gray-700 text-base font-medium">Root Cause</label>
+                            <label class="text-gray-700 text-base font-medium">Possible Root Cause</label>
                             <textarea rows="3" class="border border-border rounded-lg px-4 py-3 text-gray-700 bg-secondary focus:outline-none focus:ring-2 focus:ring-primary text-base resize-none"></textarea>
                         </div>
                         <div class="flex flex-col gap-4">
@@ -155,12 +155,12 @@
                         </div>
                     </div>
                     <div id="responsible-areas-section" class="bg-secondary border border-border rounded-lg p-6 flex flex-col gap-6">
-                        <label class="text-gray-700 text-base font-medium mb-2">Responsible Areas</label>
+                        <label class="text-gray-700 text-base font-medium mb-2">Responsible Areas <span class="text-error">*</span></label>
                         <div id="responsible-areas-list" class="flex flex-col gap-4">
                             <div class="flex gap-4 items-center" id="area-row-1">
                                 <div class="flex-1 min-w-[150px]">
                                     <div class="flex flex-col">
-                                        <label class="block text-sm font-medium text-gray-600 mb-1">Area</label>
+                                        <label class="block text-sm font-medium text-gray-600 mb-1">Area <span class="text-error">*</span></label>
                                         <div class="relative">
                                             <input type="text" class="border border-border rounded-lg px-4 py-2 text-gray-700 bg-white focus:outline-none focus:ring-2 focus:ring-primary text-base w-full">
                                             <i class="fa-solid fa-magnifying-glass absolute right-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
@@ -169,24 +169,22 @@
                                 </div>
                                 <div class="flex-1">
                                     <div class="flex flex-col">
-                                        <label class="block text-sm font-medium text-gray-600 mb-1">Responsible Person</label>
+                                        <label class="block text-sm font-medium text-gray-600 mb-1">Responsible Person <span class="text-error">*</span></label>
                                         <div class="relative">
                                             <input type="text" class="border border-border rounded-lg px-4 py-2 text-gray-700 bg-white focus:outline-none focus:ring-2 focus:ring-primary text-base w-full">
                                             <i class="fa-solid fa-magnifying-glass absolute right-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="flex items-center">
-                                    <div class="w-40">
-                                        <div class="flex flex-col">
-                                            <label class="block text-sm font-medium text-gray-600 mb-1">Due Date</label>
+                                <div class="flex-1">
+                                    <div class="flex flex-col">
+                                        <label class="block text-sm font-medium text-gray-600 mb-1">Due Date <span class="text-error">*</span></label>
+                                        <div class="flex items-center gap-4">
                                             <input type="date" class="w-full border border-border rounded-lg px-4 py-2 text-gray-700 bg-white focus:outline-none focus:ring-2 focus:ring-primary text-base">
+                                            <button type="button" class="text-error border border-border rounded-lg px-2 py-2 hover:bg-red-50 flex items-center justify-center area-remove-btn" onclick="removeAreaRow(this)">
+                                                <i class="fa-solid fa-trash"></i>
+                                            </button>
                                         </div>
-                                    </div>
-                                    <div class="flex-shrink-0 w-10 ml-4">
-                                        <button type="button" class="text-error border border-border rounded-lg px-2 py-2 hover:bg-red-50 flex items-center justify-center area-remove-btn" onclick="removeAreaRow(this)">
-                                            <i class="fa-solid fa-trash"></i>
-                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -248,7 +246,7 @@
             areaRow.innerHTML = `
                                 <div class="flex-1 min-w-[150px]">
                                     <div class="flex flex-col">
-                                        <label class="block text-sm font-medium text-gray-600 mb-1">Area</label>
+                                        <label class="block text-sm font-medium text-gray-600 mb-1">Area <span class="text-error">*</span></label>
                                         <div class="relative">
                                             <input type="text" class="border border-border rounded-lg px-4 py-2 text-gray-700 bg-white focus:outline-none focus:ring-2 focus:ring-primary text-base w-full">
                                             <i class="fa-solid fa-magnifying-glass absolute right-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
@@ -257,24 +255,22 @@
                                 </div>
                                 <div class="flex-1">
                                     <div class="flex flex-col">
-                                        <label class="block text-sm font-medium text-gray-600 mb-1">Responsible Person</label>
+                                        <label class="block text-sm font-medium text-gray-600 mb-1">Responsible Person <span class="text-error">*</span></label>
                                         <div class="relative">
                                             <input type="text" class="border border-border rounded-lg px-4 py-2 text-gray-700 bg-white focus:outline-none focus:ring-2 focus:ring-primary text-base w-full">
                                             <i class="fa-solid fa-magnifying-glass absolute right-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="flex items-center">
-                                    <div class="w-40">
-                                        <div class="flex flex-col">
-                                            <label class="block text-sm font-medium text-gray-600 mb-1">Due Date</label>
+                                <div class="flex-1">
+                                    <div class="flex flex-col">
+                                        <label class="block text-sm font-medium text-gray-600 mb-1">Due Date <span class="text-error">*</span></label>
+                                        <div class="flex items-center gap-4">
                                             <input type="date" class="w-full border border-border rounded-lg px-4 py-2 text-gray-700 bg-white focus:outline-none focus:ring-2 focus:ring-primary text-base">
+                                            <button type="button" class="text-error border border-border rounded-lg px-2 py-2 hover:bg-red-50 flex items-center justify-center area-remove-btn" onclick="removeAreaRow(this)">
+                                                <i class="fa-solid fa-trash"></i>
+                                            </button>
                                         </div>
-                                    </div>
-                                    <div class="flex-shrink-0 w-10 ml-4">
-                                        <button type="button" class="text-error border border-border rounded-lg px-2 py-2 hover:bg-red-50 flex items-center justify-center area-remove-btn" onclick="removeAreaRow(this)">
-                                            <i class="fa-solid fa-trash"></i>
-                                        </button>
                                     </div>
                                 </div>
                             `;

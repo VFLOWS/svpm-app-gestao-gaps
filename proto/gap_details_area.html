@@ -1,0 +1,439 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script> window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <style>::-webkit-scrollbar { display: none;}</style>
+    <script>tailwind.config = {
+        "theme": {
+            "extend": {
+                "colors": {
+                    "primary": "#2553A1",
+                    "accent": "#22B07D",
+                    "secondary": "#F7F9FB",
+                    "error": "#DF3F40",
+                    "border": "#E3E6EA"
+                },
+                "fontFamily": {
+                    "sans": [
+                        "Inter",
+                        "sans-serif"
+                    ]
+                }
+            }
+        }
+    };</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;500;600;700;800;900&display=swap">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif !important;
+        }
+        .fa, .fas, .far, .fal, .fab {
+            font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands" !important;
+        }
+        ::-webkit-scrollbar {
+            display: none;
+        }
+        html, body {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-secondary font-sans">
+    <div class="flex h-full">
+        <div id="sidebar" class="w-64 bg-white h-[100vh] fixed border-r border-border">
+            <div class="p-6">
+                <h1 class="text-xl font-semibold text-primary">Serra Verde</h1>
+                <p class="text-sm text-gray-500">GAP Management</p>
+            </div>
+            <nav class="mt-6">
+                <span class="flex items-center px-6 py-3 text-primary bg-blue-50 cursor-pointer">
+                    <i class="fa-solid fa-list-ul w-5"></i>
+                    <span class="ml-3">GAPs List</span>
+                </span>
+                <span class="flex items-center px-6 py-3 text-gray-600 hover:bg-secondary cursor-pointer">
+                    <i class="fa-solid fa-triangle-exclamation w-5"></i>
+                    <span class="ml-3">GAP Registration</span>
+                </span>
+                <span class="flex items-center px-6 py-3 text-gray-600 hover:bg-secondary cursor-pointer">
+                    <i class="fa-solid fa-list-check w-5"></i>
+                    <span class="ml-3">Action Plans</span>
+                </span>
+                <span class="flex items-center px-6 py-3 text-gray-600 hover:bg-secondary cursor-pointer">
+                    <i class="fa-solid fa-chart-line w-5"></i>
+                    <span class="ml-3">Follow-ups</span>
+                </span>
+                <span class="flex items-center px-6 py-3 text-gray-600 hover:bg-secondary cursor-pointer">
+                    <i class="fa-solid fa-check-double w-5"></i>
+                    <span class="ml-3">Validation</span>
+                </span>
+            </nav>
+        </div>
+        <main id="main-gap-details" class="ml-64 flex-1 p-8 min-h-[900px]">
+            <header id="header" class="flex justify-between items-center mb-8">
+                <div>
+                    <h2 class="text-2xl font-medium text-gray-800">GAP Details</h2>
+                    <p class="text-gray-500">Review GAP details and manage action plans</p>
+                </div>
+                <div class="flex items-center gap-4">
+                    <button class="px-4 py-2 bg-white border border-border rounded-lg text-gray-600 hover:bg-secondary">
+                        <i class="fa-solid fa-bell mr-2"></i>
+                        <span class="bg-error text-white text-xs rounded-full px-1.5 py-0.5">3</span>
+                    </button>
+                    <div class="flex items-center gap-3 bg-white border border-border rounded-lg px-4 py-2">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" class="w-8 h-8 rounded-full">
+                        <div>
+                            <p class="text-sm font-medium">John Cooper</p>
+                            <p class="text-xs text-gray-500">Auditor</p>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <section id="gap-info-panel" class="bg-white rounded-lg border border-border p-8 mb-8 flex gap-10 flex-wrap">
+                <div class="flex-1 min-w-[340px]">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="bg-secondary rounded-md px-3 py-1 text-primary font-semibold text-base tracking-wide border border-border">GAP-0021</span>
+                        <span class="px-3 py-1 rounded text-white bg-error/90 text-sm font-semibold">High</span>
+                        <span class="px-3 py-1 rounded bg-accent/10 text-accent text-sm font-semibold">Open</span>
+                    </div>
+                    <h3 class="text-lg font-medium text-gray-800 mb-2">Routine inspection revealed improper storage of chemicals in warehouse area.</h3>
+                    <div class="grid grid-cols-2 gap-x-6 gap-y-3 mt-4 text-base">
+                        <div id="gap-root-cause">
+                            <p class="text-gray-500 font-medium">Possible Root Cause</p>
+                            <p class="text-gray-700">Insufficient staff training and lack of clear storage guidelines.</p>
+                        </div>
+                        <div id="gap-recurrence">
+                            <p class="text-gray-500 font-medium">Recurrence</p>
+                            <p class="text-gray-700">Recurring</p>
+                        </div>
+                        <div id="gap-initial-action-plan" class="col-span-2">
+                            <p class="text-gray-500 font-medium">Initial Action Plan Proposal</p>
+                            <p class="text-gray-700">Develop and implement a standardized chemical storage SOP and conduct training sessions for all warehouse staff.</p>
+                        </div>
+                    </div>
+                </div>
+                <div id="gap-attachments-responsibles" class="min-w-[320px] flex flex-col gap-8">
+                    <div id="gap-attachments" class="mb-3">
+                        <div class="flex items-center gap-2 mb-2">
+                            <i class="fa-solid fa-paperclip text-primary"></i>
+                            <span class="font-medium text-gray-700">Attachments</span>
+                        </div>
+                        <ul class="flex flex-col gap-2">
+                            <li class="flex items-center gap-3 p-2 bg-secondary rounded border border-border">
+                                <span class="truncate text-gray-700 flex-1">Inspection_Report_May24.pdf</span>
+                                <button title="Download" class="text-primary hover:text-accent">
+                                    <i class="fa-solid fa-download"></i>
+                                </button>
+                            </li>
+                            <li class="flex items-center gap-3 p-2 bg-secondary rounded border border-border">
+                                <span class="truncate text-gray-700 flex-1">Warehouse_Photo_01.jpg</span>
+                                <button title="Download" class="text-primary hover:text-accent">
+                                    <i class="fa-solid fa-download"></i>
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="gap-responsible-areas" class="">
+                        <div class="flex items-center gap-2 mb-2">
+                            <i class="fa-solid fa-users text-primary"></i>
+                            <span class="font-medium text-gray-700">Responsible Areas</span>
+                        </div>
+                        <ul class="flex flex-col gap-1">
+                            <li class="flex items-center gap-2 text-gray-700 p-2 bg-secondary rounded border border-border">
+                                <span class="inline-block w-2 h-2 bg-accent rounded-full"></span>
+                                <span class="font-semibold">Safety</span>
+                                <span class="mx-2 text-gray-400">•</span>
+                                <span class="text-gray-600">Maria Costa</span>
+                            </li>
+                            <li class="flex items-center gap-2 text-gray-700 p-2 bg-secondary rounded border border-border">
+                                <span class="inline-block w-2 h-2 bg-primary rounded-full"></span>
+                                <span class="font-semibold">Operations</span>
+                                <span class="mx-2 text-gray-400">•</span>
+                                <span class="text-gray-600">Carlos Ramos</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            <section id="gap-action-history" class="bg-white rounded-lg border border-border p-8 mb-8">
+                <div class="flex items-center justify-between mb-6">
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-clock-rotate-left text-primary"></i>
+                        <h4 class="text-lg font-medium text-gray-800">Action History</h4>
+                    </div>
+                </div>
+                <div class="flex flex-col gap-8">
+                    <div class="flex items-start gap-2">
+                        <div class="flex-shrink-0">
+                            <div class="w-6 h-6 rounded-full bg-primary flex items-center justify-center text-white text-xs">
+                                <i class="fa-solid fa-circle-plus"></i>
+                            </div>
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <span class="font-medium text-gray-800 text-xs">GAP Created</span>
+                                    <p class="text-xs text-gray-500">Routine inspection revealed improper storage of chemicals in warehouse area.</p>
+                                </div>
+                                <span class="text-xs text-gray-500 whitespace-nowrap">10/06/2024 14:30</span>
+                            </div>
+                            <div class="mt-1 flex items-center gap-1 text-xs text-gray-500">
+                                <i class="fa-solid fa-user"></i>
+                                <span>John Cooper</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-2">
+                        <div class="flex-shrink-0">
+                            <div class="w-6 h-6 rounded-full bg-accent flex items-center justify-center text-white text-xs">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <span class="font-medium text-gray-800 text-xs">Initial Action Plan Created</span>
+                                    <p class="text-xs text-gray-500">Develop and implement a standardized chemical storage SOP and conduct training sessions for all warehouse staff.</p>
+                                </div>
+                                <span class="text-xs text-gray-500 whitespace-nowrap">10/06/2024 14:35</span>
+                            </div>
+                            <div class="mt-1 flex items-center gap-1 text-xs text-gray-500">
+                                <i class="fa-solid fa-user"></i>
+                                <span>John Cooper</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="gap-area-actions" class="bg-white rounded-lg border border-border p-8 mb-8">
+                <div class="flex items-center justify-between mb-6">
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-shield text-primary"></i>
+                        <h4 class="text-lg font-medium text-gray-800">Area Actions</h4>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <button id="accept-gap-btn" class="bg-accent text-white px-6 py-2 rounded-lg hover:bg-accent/90 flex items-center gap-2">
+                            <i class="fa-solid fa-check"></i>
+                            Accept
+                        </button>
+                        <button id="reject-gap-btn" class="bg-error text-white px-6 py-2 rounded-lg hover:bg-error/90 flex items-center gap-2">
+                            <i class="fa-solid fa-times"></i>
+                            Reject
+                        </button>
+                        <button id="transfer-gap-btn" class="bg-primary text-white px-6 py-2 rounded-lg hover:bg-primary/90 flex items-center gap-2">
+                            <i class="fa-solid fa-arrow-right"></i>
+                            Transfer
+                        </button>
+                    </div>
+                </div>
+                <div id="accept-gap-modal" class="hidden">
+                    <div class="bg-white rounded-lg border border-border p-6">
+                        <h3 class="text-lg font-medium text-gray-800 mb-4">Accept GAP</h3>
+                        <div class="grid grid-cols-1 gap-6">
+                            <div class="flex flex-col gap-4">
+                                <label class="text-gray-700 text-base font-medium">Action Plan Title <span class="text-error">*</span></label>
+                                <input type="text" class="border border-border rounded-lg px-4 py-2 text-gray-700 bg-white focus:outline-none focus:ring-2 focus:ring-primary text-base w-full">
+                            </div>
+                            <div class="flex flex-col gap-4">
+                                <label class="text-gray-700 text-base font-medium">Description <span class="text-error">*</span></label>
+                                <textarea rows="3" class="border border-border rounded-lg px-4 py-2 text-gray-700 bg-white focus:outline-none focus:ring-2 focus:ring-primary text-base w-full"></textarea>
+                            </div>
+                            <div class="flex flex-col gap-4">
+                                <label class="text-gray-700 text-base font-medium">Responsible Person <span class="text-error">*</span></label>
+                                <div class="relative">
+                                    <input type="text" class="border border-border rounded-lg px-4 py-2 text-gray-700 bg-white focus:outline-none focus:ring-2 focus:ring-primary text-base w-full">
+                                    <i class="fa-solid fa-magnifying-glass absolute right-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                                </div>
+                            </div>
+                            <div class="flex flex-col gap-4">
+                                <label class="text-gray-700 text-base font-medium">Due Date <span class="text-error">*</span></label>
+                                <input type="date" class="border border-border rounded-lg px-4 py-2 text-gray-700 bg-white focus:outline-none focus:ring-2 focus:ring-primary text-base w-full">
+                            </div>
+                            <div class="flex justify-end gap-4">
+                                <button type="button" class="bg-white border border-border text-gray-600 px-6 py-2 rounded-lg hover:bg-secondary">Cancel</button>
+                                <button type="submit" class="bg-accent text-white px-8 py-2 rounded-lg hover:bg-accent/90">Save Action Plan</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="reject-gap-modal" class="hidden">
+                    <div class="bg-white rounded-lg border border-border p-6">
+                        <h3 class="text-lg font-medium text-gray-800 mb-6">Reject GAP</h3>
+                        <div class="space-y-6">
+                            <div>
+                                <label class="block text-gray-700 text-sm font-medium mb-2">Rejection Justification <span class="text-error">*</span></label>
+                                <textarea rows="4" class="w-full border border-border rounded-lg px-4 py-2 text-gray-700 bg-white focus:outline-none focus:ring-2 focus:ring-primary"></textarea>
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 text-sm font-medium mb-2">Attachments</label>
+                                <div class="flex items-center gap-4">
+                                    <i class="fa-solid fa-paperclip text-primary text-xl"></i>
+                                    <div class="flex-1">
+                                        <button type="button" class="flex items-center gap-2 text-primary hover:text-accent">
+                                            <i class="fa-solid fa-upload"></i>
+                                            <span>Upload Files</span>
+                                        </button>
+                                        <input type="file" class="hidden" id="rejection-attachments">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex justify-end gap-4">
+                                <button type="button" class="bg-white border border-border text-gray-600 px-6 py-2 rounded-lg hover:bg-secondary">Cancel</button>
+                                <button type="submit" class="bg-error text-white px-8 py-2 rounded-lg hover:bg-error/90">Reject GAP</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="transfer-gap-modal" class="hidden">
+                    <div class="bg-white rounded-lg border border-border p-6">
+                        <h3 class="text-lg font-medium text-gray-800 mb-6">Transfer GAP</h3>
+                        <div class="space-y-6">
+                            <div>
+                                <label class="block text-gray-700 text-sm font-medium mb-2">Target Area <span class="text-error">*</span></label>
+                                <div class="relative">
+                                    <input type="text" class="w-full border border-border rounded-lg px-4 py-2 text-gray-700 bg-white focus:outline-none focus:ring-2 focus:ring-primary" placeholder="Search for area...">
+                                    <i class="fa-solid fa-magnifying-glass absolute right-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 text-sm font-medium mb-2">Reason for Transfer <span class="text-error">*</span></label>
+                                <textarea rows="4" class="w-full border border-border rounded-lg px-4 py-2 text-gray-700 bg-white focus:outline-none focus:ring-2 focus:ring-primary"></textarea>
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 text-sm font-medium mb-2">Attachments</label>
+                                <div class="flex items-center gap-4">
+                                    <i class="fa-solid fa-paperclip text-primary text-xl"></i>
+                                    <div class="flex-1">
+                                        <button type="button" class="flex items-center gap-2 text-primary hover:text-accent">
+                                            <i class="fa-solid fa-upload"></i>
+                                            <span>Upload Files</span>
+                                        </button>
+                                        <input type="file" class="hidden" id="transfer-attachments">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex justify-end gap-4">
+                                <button type="button" class="bg-white border border-border text-gray-600 px-6 py-2 rounded-lg hover:bg-secondary">Cancel</button>
+                                <button type="submit" class="bg-primary text-white px-8 py-2 rounded-lg hover:bg-primary/90">Transfer GAP</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="action-plans-section" class="bg-white rounded-lg border border-border p-8">
+                <div class="flex items-center justify-between mb-6">
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-list-check text-primary"></i>
+                        <h4 class="text-lg font-medium text-gray-800">Action Plans</h4>
+                    </div>
+                </div>
+                <div id="action-plans-list" class="flex flex-col gap-8">
+                    <div class="bg-secondary rounded-lg border border-border p-4">
+                        <div class="flex items-center justify-between mb-4">
+                            <div>
+                                <h5 class="text-base font-medium text-gray-800">Implement Safety Training Program</h5>
+                                <p class="text-sm text-gray-500">Develop and implement a comprehensive safety training program for all warehouse staff</p>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <span class="px-3 py-1 rounded text-white bg-accent text-sm font-semibold">In Progress</span>
+                                <button class="text-primary hover:text-accent">
+                                    <i class="fa-solid fa-pen"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4 text-sm text-gray-600">
+                            <div>
+                                <span class="font-medium text-gray-700">Responsible:</span>
+                                <span class="ml-2">Maria Costa</span>
+                            </div>
+                            <div>
+                                <span class="font-medium text-gray-700">Due Date:</span>
+                                <span class="ml-2">15/07/2024</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-secondary rounded-lg border border-border p-4">
+                        <div class="flex items-center justify-between mb-4">
+                            <div>
+                                <h5 class="text-base font-medium text-gray-800">Update Storage SOP</h5>
+                                <p class="text-sm text-gray-500">Create and implement a new Standard Operating Procedure for chemical storage</p>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <span class="px-3 py-1 rounded text-white bg-accent text-sm font-semibold">Pending</span>
+                                <button class="text-primary hover:text-accent">
+                                    <i class="fa-solid fa-pen"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4 text-sm text-gray-600">
+                            <div>
+                                <span class="font-medium text-gray-700">Responsible:</span>
+                                <span class="ml-2">Carlos Ramos</span>
+                            </div>
+                            <div>
+                                <span class="font-medium text-gray-700">Due Date:</span>
+                                <span class="ml-2">20/07/2024</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script>
+        // Modal handling
+        const modals = {
+            accept: document.getElementById('accept-gap-modal'),
+            reject: document.getElementById('reject-gap-modal'),
+            transfer: document.getElementById('transfer-gap-modal')
+        };
+
+        // Helper function to close all modals
+        function closeAllModals() {
+            Object.values(modals).forEach(modal => {
+                modal.classList.add('hidden');
+            });
+        }
+
+        // Open modals
+        document.getElementById('accept-gap-btn').addEventListener('click', () => {
+            closeAllModals();
+            modals.accept.classList.remove('hidden');
+        });
+
+        document.getElementById('reject-gap-btn').addEventListener('click', () => {
+            closeAllModals();
+            modals.reject.classList.remove('hidden');
+        });
+
+        document.getElementById('transfer-gap-btn').addEventListener('click', () => {
+            closeAllModals();
+            modals.transfer.classList.remove('hidden');
+        });
+
+        // Close modals when clicking cancel buttons
+        document.querySelectorAll('.bg-white button').forEach(button => {
+            if (button.textContent === 'Cancel') {
+                button.addEventListener('click', () => {
+                    const modal = button.closest('.bg-white');
+                    modal.classList.add('hidden');
+                });
+            }
+        });
+
+        // Close modals when clicking submit buttons
+        document.querySelectorAll('.bg-white button[type="submit"]').forEach(button => {
+            button.addEventListener('click', () => {
+                const modal = button.closest('.bg-white');
+                modal.classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
