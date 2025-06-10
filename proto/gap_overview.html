@@ -1,0 +1,278 @@
+<html><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script> window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <style>::-webkit-scrollbar { display: none;}</style>
+    <script>tailwind.config = {
+  "theme": {
+    "extend": {
+      "colors": {
+        "primary": "#2553A1",
+        "accent": "#22B07D",
+        "secondary": "#F7F9FB",
+        "error": "#DF3F40",
+        "border": "#E3E6EA"
+      },
+      "fontFamily": {
+        "sans": [
+          "Inter",
+          "sans-serif"
+        ]
+      }
+    }
+  }
+};</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;500;600;700;800;900&amp;display=swap"><style>
+      body {
+        font-family: 'Inter', sans-serif !important;
+      }
+      
+      /* Preserve Font Awesome icons */
+      .fa, .fas, .far, .fal, .fab {
+        font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands" !important;
+      }
+    </style><style>
+  .highlighted-section {
+    outline: 2px solid #3F20FB;
+    background-color: rgba(63, 32, 251, 0.1);
+  }
+
+  .edit-button {
+    position: absolute;
+    z-index: 1000;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  html, body {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  </style></head>
+<body class="bg-secondary font-sans">
+    <div class="flex h-full">
+        <div id="sidebar" class="w-64 bg-white h-[100vh] fixed border-r border-border">
+            <div class="p-6">
+                <h1 class="text-xl font-semibold text-primary">Serra Verde</h1>
+                <p class="text-sm text-gray-500">GAP Management</p>
+            </div>
+            <nav class="mt-6">
+                <span class="flex items-center px-6 py-3 text-primary bg-blue-50 cursor-pointer">
+                    <i class="fa-solid fa-list-ul w-5"></i>
+                    <span class="ml-3">GAPs List</span>
+                </span>
+                <span class="flex items-center px-6 py-3 text-gray-600 hover:bg-secondary cursor-pointer">
+                    <i class="fa-solid fa-triangle-exclamation w-5"></i>
+                    <span class="ml-3">GAP Registration</span>
+                </span>
+                <span class="flex items-center px-6 py-3 text-gray-600 hover:bg-secondary cursor-pointer">
+                    <i class="fa-solid fa-list-check w-5"></i>
+                    <span class="ml-3">Action Plans</span>
+                </span>
+                <span class="flex items-center px-6 py-3 text-gray-600 hover:bg-secondary cursor-pointer">
+                    <i class="fa-solid fa-chart-line w-5"></i>
+                    <span class="ml-3">Follow-ups</span>
+                </span>
+                <span class="flex items-center px-6 py-3 text-gray-600 hover:bg-secondary cursor-pointer">
+                    <i class="fa-solid fa-check-double w-5"></i>
+                    <span class="ml-3">Validation</span>
+                </span>
+            </nav>
+        </div>
+        <main id="main-content-gaps-list" class="ml-64 flex-1 p-8 min-h-[900px]">
+            <header id="header" class="flex justify-between items-center mb-8">
+                <div>
+                    <h2 class="text-2xl font-medium text-gray-800">GAPs Overview</h2>
+                    <p class="text-gray-500">View and manage all registered GAPs</p>
+                </div>
+                <div class="flex items-center gap-4">
+                    <button class="px-4 py-2 bg-white border border-border rounded-lg text-gray-600 hover:bg-secondary">
+                        <i class="fa-solid fa-bell mr-2"></i>
+                        <span class="bg-error text-white text-xs rounded-full px-1.5 py-0.5">3</span>
+                    </button>
+                    <div class="flex items-center gap-3 bg-white border border-border rounded-lg px-4 py-2">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" class="w-8 h-8 rounded-full">
+                        <div>
+                            <p class="text-sm font-medium">John Cooper</p>
+                            <p class="text-xs text-gray-500">Auditor</p>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <section id="gaps-list-filters" class="bg-white rounded-lg border border-border p-6 mb-8">
+                <div class="flex flex-wrap gap-6 items-end">
+                    <div class="flex flex-col gap-2 min-w-[160px]">
+                        <label class="text-gray-700 text-sm font-medium">Status</label>
+                        <select id="filter-status" class="border border-border rounded-lg px-4 py-3 text-gray-700 bg-secondary focus:outline-none focus:ring-2 focus:ring-primary text-base">
+                            <option value="">All</option>
+                            <option value="open">Open</option>
+                            <option value="in-progress">In Progress</option>
+                            <option value="closed">Closed</option>
+                        </select>
+                    </div>
+                    <div class="flex flex-col gap-2 flex-1 min-w-[220px]">
+                        <label class="text-gray-700 text-sm font-medium">Search</label>
+                        <div class="relative">
+                            <input id="filter-search" type="text" placeholder="GAP Description or Responsible Area" class="border border-border rounded-lg px-4 py-3 text-gray-700 bg-secondary focus:outline-none focus:ring-2 focus:ring-primary text-base w-full">
+                            <i class="fa-solid fa-magnifying-glass absolute right-4 top-3.5 text-gray-400"></i>
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-2 min-w-[220px]">
+                        <label class="text-gray-700 text-sm font-medium">Registration Date</label>
+                        <div class="flex gap-2">
+                            <input id="filter-date-from" type="date" class="border border-border rounded-lg px-3 py-3 text-gray-700 bg-secondary focus:outline-none focus:ring-2 focus:ring-primary text-base w-full">
+                            <span class="text-gray-400 flex items-center px-1">–</span>
+                            <input id="filter-date-to" type="date" class="border border-border rounded-lg px-3 py-3 text-gray-700 bg-secondary focus:outline-none focus:ring-2 focus:ring-primary text-base w-full">
+                        </div>
+                    </div>
+                    <div>
+                        <button id="filter-btn" class="bg-accent text-white px-6 py-3 rounded-lg font-medium hover:bg-accent/90 flex items-center gap-2 mt-1">
+                            <i class="fa-solid fa-filter"></i>
+                            Filter
+                        </button>
+                    </div>
+                </div>
+            </section>
+            <section id="gaps-list-table-section" class="bg-white rounded-lg border border-border p-6">
+                <div class="overflow-x-auto">
+                    <table id="gaps-list-table" class="min-w-full divide-y divide-border text-base">
+                        <thead>
+                            <tr class="bg-secondary">
+                                <th class="px-4 py-3 font-medium text-primary text-left rounded-tl-lg">GAP ID</th>
+                                <th class="px-4 py-3 font-medium text-primary text-left">Description</th>
+                                <th class="px-4 py-3 font-medium text-primary text-left">Risk Level</th>
+                                <th class="px-4 py-3 font-medium text-primary text-left">Status</th>
+                                <th class="px-4 py-3 font-medium text-primary text-left">Reg. Date</th>
+                                <th class="px-4 py-3 font-medium text-primary text-center">Assigned Areas</th>
+                                <th class="px-4 py-3 font-medium text-primary text-center rounded-tr-lg">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="gaps-table-body" class="bg-white">
+                            <tr class="border-b border-border" id="gap-row-1">
+                                <td class="px-4 py-4 text-gray-800 font-medium">GAP-0021</td>
+                                <td class="px-4 py-4 text-gray-700 truncate max-w-xs">Routine inspection revealed improper storage of chemicals in warehouse area.</td>
+                                <td class="px-4 py-4">
+                                    <span class="px-3 py-1 rounded text-white bg-error text-sm font-semibold">High</span>
+                                </td>
+                                <td class="px-4 py-4">
+                                    <span class="px-3 py-1 rounded bg-accent/10 text-accent text-sm font-semibold">Open</span>
+                                </td>
+                                <td class="px-4 py-4 text-gray-600">17/05/2024</td>
+                                <td class="px-4 py-4 text-center text-gray-800">2</td>
+                                <td class="px-4 py-4 text-center">
+                                    <div class="flex gap-2 justify-center">
+                                        <button title="View Details" class="w-9 h-9 rounded-full hover:bg-secondary flex items-center justify-center text-primary">
+                                            <i class="fa-solid fa-eye"></i>
+                                        </button>
+                                        <button title="Register Action Plan" class="w-9 h-9 rounded-full hover:bg-accent/10 flex items-center justify-center text-accent">
+                                            <i class="fa-solid fa-clipboard-check"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="border-b border-border" id="gap-row-2">
+                                <td class="px-4 py-4 text-gray-800 font-medium">GAP-0020</td>
+                                <td class="px-4 py-4 text-gray-700 truncate max-w-xs">No signage at the emergency exits of processing plant.</td>
+                                <td class="px-4 py-4">
+                                    <span class="px-3 py-1 rounded text-white bg-accent text-sm font-semibold">Medium</span>
+                                </td>
+                                <td class="px-4 py-4">
+                                    <span class="px-3 py-1 rounded bg-primary/10 text-primary text-sm font-semibold">In Progress</span>
+                                </td>
+                                <td class="px-4 py-4 text-gray-600">29/04/2024</td>
+                                <td class="px-4 py-4 text-center text-gray-800">1</td>
+                                <td class="px-4 py-4 text-center">
+                                    <div class="flex gap-2 justify-center">
+                                        <button title="View Details" class="w-9 h-9 rounded-full hover:bg-secondary flex items-center justify-center text-primary">
+                                            <i class="fa-solid fa-eye"></i>
+                                        </button>
+                                        <button title="Register Action Plan" class="w-9 h-9 rounded-full hover:bg-accent/10 flex items-center justify-center text-accent">
+                                            <i class="fa-solid fa-clipboard-check"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="border-b border-border" id="gap-row-3">
+                                <td class="px-4 py-4 text-gray-800 font-medium">GAP-0019</td>
+                                <td class="px-4 py-4 text-gray-700 truncate max-w-xs">Weekly safety drill not documented in logbook.</td>
+                                <td class="px-4 py-4">
+                                    <span class="px-3 py-1 rounded text-white bg-accent text-sm font-semibold">Low</span>
+                                </td>
+                                <td class="px-4 py-4">
+                                    <span class="px-3 py-1 rounded bg-gray-200 text-gray-600 text-sm font-semibold">Closed</span>
+                                </td>
+                                <td class="px-4 py-4 text-gray-600">10/03/2024</td>
+                                <td class="px-4 py-4 text-center text-gray-800">1</td>
+                                <td class="px-4 py-4 text-center">
+                                    <div class="flex gap-2 justify-center">
+                                        <button title="View Details" class="w-9 h-9 rounded-full hover:bg-secondary flex items-center justify-center text-primary">
+                                            <i class="fa-solid fa-eye"></i>
+                                        </button>
+                                        <button title="Register Action Plan" class="w-9 h-9 rounded-full hover:bg-accent/10 flex items-center justify-center text-accent">
+                                            <i class="fa-solid fa-clipboard-check"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="border-b border-border">
+                                <td class="px-4 py-4 text-gray-800 font-medium">GAP-0022</td>
+                                <td class="px-4 py-4 text-gray-700 truncate max-w-xs">Safety equipment not properly calibrated during inspection.</td>
+                                <td class="px-4 py-4">
+                                    <span class="px-3 py-1 rounded text-white bg-accent text-sm font-semibold">Medium</span>
+                                </td>
+                                <td class="px-4 py-4">
+                                    <span class="px-2 py-1 rounded bg-yellow-100 text-yellow-800 text-xs font-semibold whitespace-nowrap">Closure Review</span>
+                                </td>
+                                <td class="px-4 py-4 text-gray-600">02/06/2024</td>
+                                <td class="px-4 py-4 text-center text-gray-800">3</td>
+                                <td class="px-4 py-4 text-center">
+                                    <div class="flex gap-2 justify-center">
+                                        <button title="View Details" class="w-9 h-9 rounded-full hover:bg-secondary flex items-center justify-center text-primary">
+                                            <i class="fa-solid fa-eye"></i>
+                                        </button>
+                                        <button title="Register Action Plan" class="w-9 h-9 rounded-full hover:bg-accent/10 flex items-center justify-center text-accent">
+                                            <i class="fa-solid fa-clipboard-check"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr id="gaps-empty-state" class="hidden">
+                                <td colspan="7" class="py-12">
+                                    <div class="flex flex-col items-center justify-center text-center gap-4">
+                                        <i class="fa-solid fa-folder-open text-4xl text-gray-300"></i>
+                                        <div>
+                                            <p class="text-lg text-gray-600 font-medium">No GAPs found</p>
+                                            <p class="text-gray-400 text-base">Try adjusting your filters or registering a new GAP.</p>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script>
+        // Filter/search logic (static demo)
+        document.getElementById('filter-btn').addEventListener('click', function() {
+            // Static: just show empty state for demonstration if search is not empty
+            let search = document.getElementById('filter-search').value.trim();
+            let emptyStateRow = document.getElementById('gaps-empty-state');
+            let rows = document.querySelectorAll('#gaps-table-body > tr');
+            if (search && search.toLowerCase() === 'none') {
+                rows.forEach(row => { if(row.id !== 'gaps-empty-state') row.style.display = 'none'; });
+                emptyStateRow.classList.remove('hidden');
+            } else {
+                rows.forEach(row => { row.style.display = ''; });
+                emptyStateRow.classList.add('hidden');
+            }
+        });
+    </script>
+
+</body></html>

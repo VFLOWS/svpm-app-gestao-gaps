@@ -1,0 +1,292 @@
+<html><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script> window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <style>::-webkit-scrollbar { display: none;}</style>
+    <script>tailwind.config = {
+  "theme": {
+    "extend": {
+      "colors": {
+        "primary": "#2553A1",
+        "accent": "#22B07D",
+        "secondary": "#F7F9FB",
+        "error": "#DF3F40",
+        "border": "#E3E6EA"
+      },
+      "fontFamily": {
+        "sans": [
+          "Inter",
+          "sans-serif"
+        ]
+      }
+    }
+  }
+};</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;500;600;700;800;900&amp;display=swap"><style>
+      body {
+        font-family: 'Inter', sans-serif !important;
+      }
+      
+      /* Preserve Font Awesome icons */
+      .fa, .fas, .far, .fal, .fab {
+        font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands" !important;
+      }
+    </style><style>
+  .highlighted-section {
+    outline: 2px solid #3F20FB;
+    background-color: rgba(63, 32, 251, 0.1);
+  }
+
+  .edit-button {
+    position: absolute;
+    z-index: 1000;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  html, body {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  </style></head>
+<body class="bg-secondary font-sans">
+    <div class="flex h-full">
+        <div id="sidebar" class="w-64 bg-white h-[100vh] fixed border-r border-border">
+            <div class="p-6">
+                <h1 class="text-xl font-semibold text-primary">Serra Verde</h1>
+                <p class="text-sm text-gray-500">GAP Management</p>
+            </div>
+            <nav class="mt-6">
+                <span class="flex items-center px-6 py-3 text-gray-600 hover:bg-secondary cursor-pointer">
+                    <i class="fa-solid fa-house w-5"></i>
+                    <span class="ml-3">Dashboard</span>
+                </span>
+                <span class="flex items-center px-6 py-3 text-primary bg-blue-50 cursor-pointer">
+                    <i class="fa-solid fa-triangle-exclamation w-5"></i>
+                    <span class="ml-3">GAP Registration</span>
+                </span>
+                <span class="flex items-center px-6 py-3 text-gray-600 hover:bg-secondary cursor-pointer">
+                    <i class="fa-solid fa-list-check w-5"></i>
+                    <span class="ml-3">Action Plans</span>
+                </span>
+                <span class="flex items-center px-6 py-3 text-gray-600 hover:bg-secondary cursor-pointer">
+                    <i class="fa-solid fa-chart-line w-5"></i>
+                    <span class="ml-3">Follow-ups</span>
+                </span>
+                <span class="flex items-center px-6 py-3 text-gray-600 hover:bg-secondary cursor-pointer">
+                    <i class="fa-solid fa-check-double w-5"></i>
+                    <span class="ml-3">Validation</span>
+                </span>
+            </nav>
+        </div>
+        <main id="main-content" class="ml-64 flex-1 p-8 min-h-[900px]">
+            <header id="header" class="flex justify-between items-center mb-8">
+                <div>
+                    <h2 class="text-2xl font-medium text-gray-800">Register New GAP</h2>
+                    <p class="text-gray-500">Fill out the form to register a non-conformity or improvement opportunity</p>
+                </div>
+                <div class="flex items-center gap-4">
+                    <button class="px-4 py-2 bg-white border border-border rounded-lg text-gray-600 hover:bg-secondary">
+                        <i class="fa-solid fa-bell mr-2"></i>
+                        <span class="bg-error text-white text-xs rounded-full px-1.5 py-0.5">3</span>
+                    </button>
+                    <div class="flex items-center gap-3 bg-white border border-border rounded-lg px-4 py-2">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" class="w-8 h-8 rounded-full">
+                        <div>
+                            <p class="text-sm font-medium">John Cooper</p>
+                            <p class="text-xs text-gray-500">Auditor</p>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <section id="gap-registration-form" class="bg-white rounded-lg border border-border p-8 max-w-[800px] mx-auto">
+                <form id="form-gap" class="flex flex-col gap-8">
+                    <div class="grid grid-cols-2 gap-8">
+                        <div class="flex flex-col gap-4">
+                            <label class="text-gray-700 text-base font-medium">Risk Level</label>
+                            <select class="border border-border rounded-lg px-4 py-3 text-gray-700 bg-secondary focus:outline-none focus:ring-2 focus:ring-primary text-base">
+                                <option value="">Select risk level</option>
+                                <option value="low">Low</option>
+                                <option value="medium">Medium</option>
+                                <option value="high">High</option>
+                                <option value="critical">Critical</option>
+                            </select>
+                        </div>
+                        <div class="flex flex-col gap-4">
+                            <label class="text-gray-700 text-base font-medium">Recurrence</label>
+                            <select class="border border-border rounded-lg px-4 py-3 text-gray-700 bg-secondary focus:outline-none focus:ring-2 focus:ring-primary text-base">
+                                <option value="">Select recurrence</option>
+                                <option value="one-time">One-time</option>
+                                <option value="recurring">Recurring</option>
+                                <option value="unknown">Unknown</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-4">
+                        <label class="text-gray-700 text-base font-medium">GAP Description</label>
+                        <textarea rows="3" class="border border-border rounded-lg px-4 py-3 text-gray-700 bg-secondary focus:outline-none focus:ring-2 focus:ring-primary text-base resize-none"></textarea>
+                    </div>
+                    <div class="grid grid-cols-2 gap-8">
+                        <div class="flex flex-col gap-4">
+                            <label class="text-gray-700 text-base font-medium">Root Cause</label>
+                            <textarea rows="3" class="border border-border rounded-lg px-4 py-3 text-gray-700 bg-secondary focus:outline-none focus:ring-2 focus:ring-primary text-base resize-none"></textarea>
+                        </div>
+                        <div class="flex flex-col gap-4">
+                            <label class="text-gray-700 text-base font-medium">Initial Action Plan Proposal</label>
+                            <textarea rows="3" class="border border-border rounded-lg px-4 py-3 text-gray-700 bg-secondary focus:outline-none focus:ring-2 focus:ring-primary text-base resize-none"></textarea>
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-4">
+                        <label class="text-gray-700 text-base font-medium">Attachments</label>
+                        <div id="attachments-upload" class="flex flex-col items-center justify-center border-2 border-dashed border-border bg-secondary rounded-lg py-8 px-4 relative">
+                            <i class="fa-solid fa-cloud-arrow-up text-3xl text-primary mb-2"></i>
+                            <p class="text-gray-600 mb-1">Drag &amp; drop files here</p>
+                            <p class="text-gray-400 text-sm mb-3">or</p>
+                            <button type="button" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary/90" onclick="document.getElementById('file-upload').click();">
+                                <i class="fa-solid fa-upload mr-2"></i>Upload File
+                            </button>
+                            <input id="file-upload" type="file" class="hidden" multiple="">
+                            <div id="uploaded-files" class="flex flex-wrap gap-2 mt-4"></div>
+                        </div>
+                    </div>
+                    <div id="responsible-areas-section" class="bg-secondary border border-border rounded-lg p-6 flex flex-col gap-6">
+                        <label class="text-gray-700 text-base font-medium mb-2">Responsible Areas</label>
+                        <div id="responsible-areas-list" class="flex flex-col gap-4">
+                            <div class="flex gap-4 items-center" id="area-row-1">
+                                <div class="flex-1 min-w-[150px]">
+                                    <div class="flex flex-col">
+                                        <label class="block text-sm font-medium text-gray-600 mb-1">Area</label>
+                                        <div class="relative">
+                                            <input type="text" class="border border-border rounded-lg px-4 py-2 text-gray-700 bg-white focus:outline-none focus:ring-2 focus:ring-primary text-base w-full">
+                                            <i class="fa-solid fa-magnifying-glass absolute right-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex-1">
+                                    <div class="flex flex-col">
+                                        <label class="block text-sm font-medium text-gray-600 mb-1">Responsible Person</label>
+                                        <div class="relative">
+                                            <input type="text" class="border border-border rounded-lg px-4 py-2 text-gray-700 bg-white focus:outline-none focus:ring-2 focus:ring-primary text-base w-full">
+                                            <i class="fa-solid fa-magnifying-glass absolute right-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex items-center">
+                                    <div class="w-40">
+                                        <div class="flex flex-col">
+                                            <label class="block text-sm font-medium text-gray-600 mb-1">Due Date</label>
+                                            <input type="date" class="w-full border border-border rounded-lg px-4 py-2 text-gray-700 bg-white focus:outline-none focus:ring-2 focus:ring-primary text-base">
+                                        </div>
+                                    </div>
+                                    <div class="flex-shrink-0 w-10 ml-4">
+                                        <button type="button" class="text-error border border-border rounded-lg px-2 py-2 hover:bg-red-50 flex items-center justify-center area-remove-btn" onclick="removeAreaRow(this)">
+                                            <i class="fa-solid fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <button id="add-area-btn" type="button" class="bg-accent text-white px-4 py-2 rounded-lg hover:bg-accent/90 flex items-center gap-2">
+                                <i class="fa-solid fa-plus"></i> Add Area
+                            </button>
+                        </div>
+                    </div>
+                    <div class="flex justify-end gap-4 mt-2">
+                        <button type="button" class="bg-white border border-border text-gray-600 px-6 py-3 rounded-lg font-medium hover:bg-secondary">Cancel</button>
+                        <button type="submit" class="bg-accent text-white px-8 py-3 rounded-lg font-medium hover:bg-accent/90">Save GAP</button>
+                    </div>
+                </form>
+            </section>
+        </main>
+    </div>
+    <script>
+        // File upload logic
+        const fileUpload = document.getElementById('file-upload');
+        const uploadedFiles = document.getElementById('uploaded-files');
+        fileUpload.addEventListener('change', function() {
+            Array.from(fileUpload.files).forEach(file => {
+                const fileDiv = document.createElement('div');
+                fileDiv.className = 'flex items-center gap-2 bg-white border border-border rounded px-3 py-1 text-sm';
+                fileDiv.innerHTML = `<i class="fa-solid fa-paperclip text-primary"></i> ${file.name}`;
+                uploadedFiles.appendChild(fileDiv);
+            });
+        });
+
+        // Drag & drop for attachments area
+        const dropArea = document.getElementById('attachments-upload');
+        dropArea.addEventListener('dragover', e => {
+            e.preventDefault();
+            dropArea.classList.add('ring-2', 'ring-primary');
+        });
+        dropArea.addEventListener('dragleave', e => {
+            dropArea.classList.remove('ring-2', 'ring-primary');
+        });
+        dropArea.addEventListener('drop', e => {
+            e.preventDefault();
+            dropArea.classList.remove('ring-2', 'ring-primary');
+            const files = e.dataTransfer.files;
+            Array.from(files).forEach(file => {
+                const fileDiv = document.createElement('div');
+                fileDiv.className = 'flex items-center gap-2 bg-white border border-border rounded px-3 py-1 text-sm';
+                fileDiv.innerHTML = `<i class="fa-solid fa-paperclip text-primary"></i> ${file.name}`;
+                uploadedFiles.appendChild(fileDiv);
+            });
+        });
+
+        // Responsible areas add/remove logic
+        let areaId = 2;
+        document.getElementById('add-area-btn').addEventListener('click', function() {
+            const areaRow = document.createElement('div');
+            areaRow.className = 'flex gap-4 items-center';
+            areaRow.id = `area-row-${areaId}`;
+            areaRow.innerHTML = `
+                                <div class="flex-1 min-w-[150px]">
+                                    <div class="flex flex-col">
+                                        <label class="block text-sm font-medium text-gray-600 mb-1">Area</label>
+                                        <div class="relative">
+                                            <input type="text" class="border border-border rounded-lg px-4 py-2 text-gray-700 bg-white focus:outline-none focus:ring-2 focus:ring-primary text-base w-full">
+                                            <i class="fa-solid fa-magnifying-glass absolute right-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex-1">
+                                    <div class="flex flex-col">
+                                        <label class="block text-sm font-medium text-gray-600 mb-1">Responsible Person</label>
+                                        <div class="relative">
+                                            <input type="text" class="border border-border rounded-lg px-4 py-2 text-gray-700 bg-white focus:outline-none focus:ring-2 focus:ring-primary text-base w-full">
+                                            <i class="fa-solid fa-magnifying-glass absolute right-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex items-center">
+                                    <div class="w-40">
+                                        <div class="flex flex-col">
+                                            <label class="block text-sm font-medium text-gray-600 mb-1">Due Date</label>
+                                            <input type="date" class="w-full border border-border rounded-lg px-4 py-2 text-gray-700 bg-white focus:outline-none focus:ring-2 focus:ring-primary text-base">
+                                        </div>
+                                    </div>
+                                    <div class="flex-shrink-0 w-10 ml-4">
+                                        <button type="button" class="text-error border border-border rounded-lg px-2 py-2 hover:bg-red-50 flex items-center justify-center area-remove-btn" onclick="removeAreaRow(this)">
+                                            <i class="fa-solid fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            `;
+            document.getElementById('responsible-areas-list').appendChild(areaRow);
+            areaId++;
+        });
+
+        function removeAreaRow(btn) {
+            if(document.querySelectorAll('#responsible-areas-list > div').length > 1){
+                btn.parentElement.remove();
+            }
+        }
+    </script>
+
+</body></html>

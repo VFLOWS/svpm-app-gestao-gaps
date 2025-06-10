@@ -1,0 +1,289 @@
+<html><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script> window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <style>::-webkit-scrollbar { display: none;}</style>
+    <script>tailwind.config = {
+  "theme": {
+    "extend": {
+      "colors": {
+        "primary": "#2553A1",
+        "accent": "#22B07D",
+        "secondary": "#F7F9FB",
+        "error": "#DF3F40",
+        "border": "#E3E6EA"
+      },
+      "fontFamily": {
+        "sans": [
+          "Inter",
+          "sans-serif"
+        ]
+      }
+    }
+  }
+};</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;500;600;700;800;900&amp;display=swap"><style>
+      body {
+        font-family: 'Inter', sans-serif !important;
+      }
+      
+      /* Preserve Font Awesome icons */
+      .fa, .fas, .far, .fal, .fab {
+        font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands" !important;
+      }
+    </style><style>
+  .highlighted-section {
+    outline: 2px solid #3F20FB;
+    background-color: rgba(63, 32, 251, 0.1);
+  }
+
+  .edit-button {
+    position: absolute;
+    z-index: 1000;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  html, body {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  </style></head>
+<body class="bg-secondary font-sans">
+    <div class="flex h-full">
+        <!-- Sidebar -->
+        <div id="sidebar" class="w-64 bg-white h-[100vh] fixed border-r border-border">
+            <div class="p-6">
+                <h1 class="text-xl font-semibold text-primary">Serra Verde</h1>
+                <p class="text-sm text-gray-500">GAP Management</p>
+            </div>
+            
+            <nav class="mt-6">
+                <span class="flex items-center px-6 py-3 text-primary bg-blue-50 cursor-pointer">
+                    <i class="fa-solid fa-house w-5"></i>
+                    <span class="ml-3">Dashboard</span>
+                </span>
+                <span class="flex items-center px-6 py-3 text-gray-600 hover:bg-secondary cursor-pointer">
+                    <i class="fa-solid fa-triangle-exclamation w-5"></i>
+                    <span class="ml-3">GAP Registration</span>
+                </span>
+                <span class="flex items-center px-6 py-3 text-gray-600 hover:bg-secondary cursor-pointer">
+                    <i class="fa-solid fa-list-check w-5"></i>
+                    <span class="ml-3">Action Plans</span>
+                </span>
+                <span class="flex items-center px-6 py-3 text-gray-600 hover:bg-secondary cursor-pointer">
+                    <i class="fa-solid fa-chart-line w-5"></i>
+                    <span class="ml-3">Follow-ups</span>
+                </span>
+                <span class="flex items-center px-6 py-3 text-gray-600 hover:bg-secondary cursor-pointer">
+                    <i class="fa-solid fa-check-double w-5"></i>
+                    <span class="ml-3">Validation</span>
+                </span>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <div class="ml-64 flex-1 p-8">
+            <!-- Header -->
+            <header id="header" class="flex justify-between items-center mb-8">
+                <div>
+                    <h2 class="text-2xl font-medium text-gray-800">GAP Management Dashboard</h2>
+                    <p class="text-gray-500">Overview of current gaps and action plans</p>
+                </div>
+                <div class="flex items-center gap-4">
+                    <button class="px-4 py-2 bg-white border border-border rounded-lg text-gray-600 hover:bg-secondary">
+                        <i class="fa-solid fa-bell mr-2"></i>
+                        <span class="bg-error text-white text-xs rounded-full px-1.5 py-0.5">3</span>
+                    </button>
+                    <button class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary/90">
+                        <i class="fa-solid fa-plus mr-2"></i>New Action Plan
+                    </button>
+                    <div class="flex items-center gap-3 bg-white border border-border rounded-lg px-4 py-2">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" class="w-8 h-8 rounded-full">
+                        <div>
+                            <p class="text-sm font-medium">John Cooper</p>
+                            <p class="text-xs text-gray-500">Auditor</p>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Filtros -->
+            <div class="mb-8">
+                <div class="flex flex-wrap gap-4">
+                    <!-- Filtro de Período -->
+                    <div class="flex-1 min-w-[200px]">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Period</label>
+                        <select class="w-full px-3 py-2 border border-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary">
+                            <option value="all">All Time</option>
+                            <option value="today">Today</option>
+                            <option value="week">This Week</option>
+                            <option value="month">This Month</option>
+                            <option value="quarter">This Quarter</option>
+                            <option value="year">This Year</option>
+                            <option value="custom">Custom Period</option>
+                        </select>
+                    </div>
+
+                    <!-- Filtro de Descrição -->
+                    <div class="flex-1 min-w-[200px]">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Description</label>
+                        <input type="text" class="w-full px-3 py-2 border border-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary" placeholder="Search by description">
+                    </div>
+
+                    <!-- Filtro de Área -->
+                    <div class="flex-1 min-w-[200px]">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Area</label>
+                        <select class="w-full px-3 py-2 border border-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary">
+                            <option value="">All Areas</option>
+                            <option value="mining">Mining</option>
+                            <option value="processing">Processing</option>
+                            <option value="maintenance">Maintenance</option>
+                            <option value="safety">Safety</option>
+                        </select>
+                    </div>
+
+                    <!-- Botão de Filtro -->
+                    <div class="flex items-end">
+                        <button class="bg-primary text-white px-6 py-2 rounded-lg hover:bg-primary/90">
+                            <i class="fa-solid fa-filter mr-2"></i>Apply Filters
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats Overview -->
+            <div id="stats-overview" class="grid grid-cols-3 gap-6 mb-8">
+                <!-- Primeira linha de indicadores -->
+                <div class="bg-white p-6 rounded-lg border border-border">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-gray-500">Total GAPs</span>
+                        <span class="bg-blue-100 text-primary px-2 py-1 rounded text-sm">This Month</span>
+                    </div>
+                    <p class="text-3xl font-medium">24</p>
+                    <p class="text-sm text-accent mt-2"><i class="fa-solid fa-arrow-up mr-1"></i>12% increase</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg border border-border">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-gray-500">In Progress</span>
+                        <span class="bg-yellow-100 text-yellow-700 px-2 py-1 rounded text-sm">Active</span>
+                    </div>
+                    <p class="text-3xl font-medium">16</p>
+                    <p class="text-sm text-gray-500 mt-2">8 pending review</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg border border-border">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-gray-500">Completed</span>
+                        <span class="bg-green-100 text-accent px-2 py-1 rounded text-sm">Validated</span>
+                    </div>
+                    <p class="text-3xl font-medium">5</p>
+                    <p class="text-sm text-accent mt-2"><i class="fa-solid fa-check mr-1"></i>Last week</p>
+                </div>
+
+                <!-- Segunda linha de indicadores -->
+                <div class="bg-white p-6 rounded-lg border border-border">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-gray-500">Overdue</span>
+                        <span class="bg-red-100 text-error px-2 py-1 rounded text-sm">Alert</span>
+                    </div>
+                    <p class="text-3xl font-medium">3</p>
+                    <p class="text-sm text-error mt-2"><i class="fa-solid fa-clock mr-1"></i>Needs attention</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg border border-border">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-gray-500">Total Action Plans</span>
+                        <span class="bg-blue-100 text-primary px-2 py-1 rounded text-sm">Current</span>
+                    </div>
+                    <p class="text-3xl font-medium">12</p>
+                    <p class="text-sm text-gray-500 mt-2">Active plans</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg border border-border">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-gray-500">No Action Plans</span>
+                        <span class="bg-red-100 text-error px-2 py-1 rounded text-sm">Alert</span>
+                    </div>
+                    <p class="text-3xl font-medium">8</p>
+                    <p class="text-sm text-error mt-2"><i class="fa-solid fa-exclamation-triangle mr-1"></i>Requires attention</p>
+                </div>
+            </div>
+
+            <!-- Progress Chart -->
+            <div id="progress-chart" class="bg-white rounded-lg border border-border p-6">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="text-xl font-medium">GAP Resolution Progress</h3>
+                    <div class="flex gap-4">
+                        <button class="text-gray-500 hover:text-primary">
+                            <i class="fa-solid fa-download"></i>
+                        </button>
+                        <select class="border border-border rounded-lg px-3 py-1.5 text-sm">
+                            <option>Last 30 Days</option>
+                            <option>Last 90 Days</option>
+                            <option>This Year</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="h-[300px]">
+                    <canvas id="progressChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const ctx = document.getElementById('progressChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Total GAPs', 'In Progress', 'Completed', 'Overdue'],
+                datasets: [{
+                    label: 'GAP Status',
+                    data: [24, 16, 5, 3],
+                    backgroundColor: [
+                        '#2553A1',
+                        '#FBBF24',
+                        '#22B07D',
+                        '#DF3F40'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            stepSize: 5
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                let label = context.dataset.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                if (context.parsed.y !== null) {
+                                    label += context.parsed.y;
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body></html>
