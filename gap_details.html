@@ -62,26 +62,26 @@
                 <p class="text-sm text-gray-500">GAP Management</p>
             </div>
             <nav class="mt-6">
-                <span class="flex items-center px-6 py-3 text-primary bg-blue-50 cursor-pointer">
-                    <i class="fa-solid fa-list-ul w-5"></i>
-                    <span class="ml-3">GAPs List</span>
-                </span>
-                <span class="flex items-center px-6 py-3 text-gray-600 hover:bg-secondary cursor-pointer">
+                <a href="gap_dashboard.html" class="flex items-center px-6 py-3 text-primary bg-blue-50 cursor-pointer">
+                    <i class="fa-solid fa-house w-5"></i>
+                    <span class="ml-3">Dashboard</span>
+                </a>
+                <a href="gap_overview.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-secondary cursor-pointer">
                     <i class="fa-solid fa-triangle-exclamation w-5"></i>
-                    <span class="ml-3">GAP Registration</span>
-                </span>
-                <span class="flex items-center px-6 py-3 text-gray-600 hover:bg-secondary cursor-pointer">
+                    <span class="ml-3">GAP Overview</span>
+                </a>
+                <a href="#" class="flex items-center px-6 py-3 text-gray-600 hover:bg-secondary cursor-pointer">
                     <i class="fa-solid fa-list-check w-5"></i>
                     <span class="ml-3">Action Plans</span>
-                </span>
-                <span class="flex items-center px-6 py-3 text-gray-600 hover:bg-secondary cursor-pointer">
+                </a>
+                <a href="#" class="flex items-center px-6 py-3 text-gray-600 hover:bg-secondary cursor-pointer">
                     <i class="fa-solid fa-chart-line w-5"></i>
                     <span class="ml-3">Follow-ups</span>
-                </span>
-                <span class="flex items-center px-6 py-3 text-gray-600 hover:bg-secondary cursor-pointer">
+                </a>
+                <a href="#" class="flex items-center px-6 py-3 text-gray-600 hover:bg-secondary cursor-pointer">
                     <i class="fa-solid fa-check-double w-5"></i>
                     <span class="ml-3">Validation</span>
-                </span>
+                </a>
             </nav>
         </div>
         <main id="main-gap-details" class="ml-64 flex-1 p-8 min-h-[900px]">
@@ -171,11 +171,11 @@
                 </div>
             </section>
             <section id="action-plans-section" class="bg-white rounded-lg border border-border p-8">
-                <div class="flex items-center justify-between mb-6">
-                    <div class="flex items-center gap-2">
-                        <i class="fa-solid fa-list-check text-primary"></i>
-                        <h4 class="text-lg font-medium text-gray-800">Action Plans</h4>
-                    </div>
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="text-lg font-medium text-gray-700">Action Plans</h3>
+                    <a href="gap_register_action_plan.html" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary/90 inline-flex items-center">
+                        <i class="fa-solid fa-plus mr-2"></i>Add New Plan
+                    </a>
                 </div>
                 <div id="action-plans-list" class="flex flex-col gap-8">
                     <div id="action-plan-area-safety" class="mb-2">
