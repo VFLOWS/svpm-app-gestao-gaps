@@ -195,15 +195,184 @@
                             </button>
                         </div>
                     </div>
-                    <div class="flex justify-end gap-4 mt-2">
-                        <button type="button" class="bg-white border border-border text-gray-600 px-6 py-3 rounded-lg font-medium hover:bg-secondary">Cancel</button>
-                        <button type="submit" class="bg-accent text-white px-8 py-3 rounded-lg font-medium hover:bg-accent/90">Save GAP</button>
+                    <div class="flex justify-end gap-4 mt-8">
+                        <a href="gap_overview.html" class="px-6 py-2.5 border border-border rounded-lg text-gray-700 hover:bg-gray-50 inline-flex items-center">
+                            Cancel
+                        </a>
+                        <button type="submit" class="bg-primary text-white px-6 py-2.5 rounded-lg hover:bg-primary/90 inline-flex items-center">
+                            <i class="fa-solid fa-save mr-2"></i>Save GAP
+                        </button>
                     </div>
                 </form>
             </section>
         </main>
     </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg transform translate-y-20 opacity-0 transition-all duration-300 z-50">
+        <div class="flex items-center">
+            <i class="fa-solid fa-check-circle text-xl mr-2"></i>
+            <span>GAP opened successfully!</span>
+        </div>
+    </div>
+
     <script>
+        // Função para adicionar estilos de erro
+        function showError(input, message) {
+            const formControl = input.closest('.flex.flex-col');
+            const errorText = formControl.querySelector('.error-text') || document.createElement('p');
+            
+            if (!formControl.querySelector('.error-text')) {
+                errorText.className = 'error-text text-xs text-error mt-1';
+                formControl.appendChild(errorText);
+            }
+            
+            errorText.textContent = message;
+            input.classList.add('border-error', 'ring-2', 'ring-red-100');
+            input.classList.remove('border-border');
+        }
+
+        // Função para remover erros
+        function clearError(input) {
+            const formControl = input.closest('.flex.flex-col');
+            const errorText = formControl.querySelector('.error-text');
+            
+            if (errorText) {
+                errorText.remove();
+            }
+            
+            input.classList.remove('border-error', 'ring-2', 'ring-red-100');
+            input.classList.add('border-border');
+        }
+
+        // Validação de campos obrigatórios
+        function validateRequired(input) {
+            if (!input.value.trim()) {
+                showError(input, 'This field is required');
+                return false;
+            }
+            clearError(input);
+            return true;
+        }
+
+        // Validação de data futura
+        function validateFutureDate(input) {
+            if (!input.value) return validateRequired(input);
+            
+            const selectedDate = new Date(input.value);
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            
+            if (selectedDate < today) {
+                showError(input, 'Date must be in the future');
+                return false;
+            }
+            
+            clearError(input);
+            return true;
+        }
+
+        // Validação de área responsável
+        function validateResponsibleAreas() {
+            const areaRows = document.querySelectorAll('div[id^="area-row-"]');
+            let isValid = true;
+            
+            areaRows.forEach(row => {
+                const inputs = row.querySelectorAll('input[required]');
+                inputs.forEach(input => {
+                    if (!validateRequired(input)) {
+                        isValid = false;
+                    }
+                });
+                
+                // Valida data futura apenas para o campo de data
+                const dateInput = row.querySelector('input[type="date"]');
+                if (dateInput && !validateFutureDate(dateInput)) {
+                    isValid = false;
+                }
+            });
+            
+            return isValid;
+        }
+
+        // Validação de arquivos anexados (se necessário)
+        function validateAttachments() {
+            // Implemente validação de arquivos se necessário
+            return true;
+        }
+
+        // Validação principal do formulário
+        function validateForm() {
+            let isValid = true;
+            
+            // Valida campos obrigatórios
+            const requiredInputs = document.querySelectorAll('input[required], textarea[required], select[required]');
+            requiredInputs.forEach(input => {
+                if (!validateRequired(input)) {
+                    isValid = false;
+                }
+            });
+            
+            // Valida áreas responsáveis
+            if (!validateResponsibleAreas()) {
+                isValid = false;
+            }
+            
+            // Valida anexos se necessário
+            if (!validateAttachments()) {
+                isValid = false;
+            }
+            
+            return isValid;
+        }
+
+        // Adiciona eventos de validação em tempo real
+        document.querySelectorAll('input, textarea, select').forEach(input => {
+            input.addEventListener('input', () => {
+                if (input.hasAttribute('required')) {
+                    validateRequired(input);
+                }
+                
+                if (input.type === 'date') {
+                    validateFutureDate(input);
+                }
+            });
+            
+            input.addEventListener('blur', () => {
+                if (input.hasAttribute('required')) {
+                    validateRequired(input);
+                }
+                
+                if (input.type === 'date') {
+                    validateFutureDate(input);
+                }
+            });
+        });
+
+        // Evento de submit do formulário
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            if (validateForm()) {
+                // Aqui você pode adicionar a lógica para salvar o GAP
+                // ...
+                
+                // Mostra o toast de sucesso
+                showToast();
+                
+                // Redireciona após 1.5 segundos
+                setTimeout(() => {
+                    window.location.href = 'gap_overview.html';
+                }, 1500);
+            } else {
+                // Rola até o primeiro erro
+                const firstError = document.querySelector('.border-error');
+                if (firstError) {
+                    firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            }
+        });
+
         // File upload logic
         const fileUpload = document.getElementById('file-upload');
         const uploadedFiles = document.getElementById('uploaded-files');
@@ -279,10 +448,131 @@
         });
 
         function removeAreaRow(btn) {
-            if(document.querySelectorAll('#responsible-areas-list > div').length > 1){
-                btn.parentElement.remove();
+            // Encontra o container da linha clicada
+            const row = btn.closest('div[id^="area-row-"]');
+            if (row && document.querySelectorAll('div[id^="area-row-"]').length > 1) {
+                row.remove();
+            } else {
+                // Se for a última linha, apenas limpa os campos
+                if (row) {
+                    const inputs = row.querySelectorAll('input');
+                    inputs.forEach(input => input.value = '');
+                }
             }
         }
+
+        // Função para mostrar o toast
+        function showToast() {
+            const toast = document.getElementById('toast');
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+            
+            // Esconde o toast após 3 segundos
+            setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+
+        // Máscaras de campo
+        function applyMasks() {
+            // Máscara para telefone
+            const phoneInputs = document.querySelectorAll('input[type="tel"]');
+            phoneInputs.forEach(input => {
+                input.addEventListener('input', function(e) {
+                    let value = e.target.value.replace(/\D/g, '');
+                    if (value.length > 11) value = value.substring(0, 11);
+                    
+                    if (value.length > 10) {
+                        value = value.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3');
+                    } else if (value.length > 5) {
+                        value = value.replace(/(\d{2})(\d{4})(\d{0,4})/, '($1) $2-$3');
+                    } else if (value.length > 2) {
+                        value = value.replace(/(\d{2})(\d{0,5})/, '($1) $2');
+                    } else if (value.length > 0) {
+                        value = value.replace(/^(\d*)/, '($1');
+                    }
+                    e.target.value = value;
+                });
+            });
+
+            // Máscara para data
+            const dateInputs = document.querySelectorAll('input[type="date"]');
+            dateInputs.forEach(input => {
+                // Configura a data mínima como hoje
+                const today = new Date().toISOString().split('T')[0];
+                input.min = today;
+                
+                // Formata a data no padrão brasileiro ao exibir
+                input.addEventListener('change', function(e) {
+                    if (e.target.value) {
+                        const [year, month, day] = e.target.value.split('-');
+                        e.target.value = `${day}/${month}/${year}`;
+                    }
+                });
+            });
+        }
+
+        // Auto-preenchimento
+        function setupAutofill() {
+            // Preenche com o nome do usuário logado (exemplo)
+            const userData = {
+                name: 'John Cooper',
+                email: 'john.cooper@example.com',
+                department: 'Auditoria'
+            };
+
+            // Preenche campos de reporte
+            const reportedByName = document.querySelector('input[placeholder*="Reported by"]');
+            const reportedByEmail = document.querySelector('input[type="email"]');
+            
+            if (reportedByName) reportedByName.value = userData.name;
+            if (reportedByEmail) reportedByEmail.value = userData.email;
+
+            // Auto-sugestão para área
+            const areaInputs = document.querySelectorAll('input[placeholder*="Area"]');
+            const areas = ['Produção', 'Qualidade', 'Manutenção', 'RH', 'Financeiro', 'TI'];
+            
+            areaInputs.forEach(input => {
+                // Cria o datalist se não existir
+                if (!input.list) {
+                    const datalist = document.createElement('datalist');
+                    datalist.id = 'areas-list';
+                    areas.forEach(area => {
+                        const option = document.createElement('option');
+                        option.value = area;
+                        datalist.appendChild(option);
+                    });
+                    document.body.appendChild(datalist);
+                    input.setAttribute('list', 'areas-list');
+                }
+
+                // Auto-complete ao digitar
+                input.addEventListener('input', function() {
+                    const value = this.value.toLowerCase();
+                    const suggestions = areas.filter(area => 
+                        area.toLowerCase().includes(value)
+                    );
+                    
+                    if (suggestions.length > 0 && value.length > 0) {
+                        // Atualiza as sugestões
+                        const datalist = document.getElementById('areas-list');
+                        datalist.innerHTML = '';
+                        suggestions.forEach(area => {
+                            const option = document.createElement('option');
+                            option.value = area;
+                            datalist.appendChild(option);
+                        });
+                    }
+                });
+            });
+        }
+
+        // Inicializa as máscaras e auto-preenchimento quando o DOM estiver pronto
+        document.addEventListener('DOMContentLoaded', function() {
+            applyMasks();
+            setupAutofill();
+        });
     </script>
 
 </body></html>
