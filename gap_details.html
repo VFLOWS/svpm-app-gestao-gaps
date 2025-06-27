@@ -321,4 +321,38 @@
 <script>window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="js/sidebar.js"></script>
+<script>
+    // Função para obter parâmetros da URL
+    function getUrlParameter(name) {
+        name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+        const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+        const results = regex.exec(location.search);
+        return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+    }
+
+    // Ao carregar a página
+    document.addEventListener('DOMContentLoaded', function() {
+        const gapId = getUrlParameter('id');
+        
+        if (gapId) {
+            // Atualiza o título da página
+            document.title = `GAP ${gapId} Details`;
+            
+            // Atualiza o ID do GAP no cabeçalho
+            const gapIdElement = document.querySelector('#gap-info-panel .bg-secondary');
+            if (gapIdElement) {
+                gapIdElement.textContent = gapId;
+            }
+            
+            // Aqui você pode adicionar mais lógica para carregar os dados do GAP específico
+            // Por exemplo, fazer uma requisição AJAX para obter os detalhes do GAP
+            // e atualizar os campos da página conforme necessário
+            console.log(`Carregando detalhes do GAP: ${gapId}`);
+        } else {
+            console.log('Nenhum ID de GAP fornecido na URL');
+            // Opcional: Redirecionar para a página de visão geral se nenhum ID for fornecido
+            // window.location.href = 'gap_overview.html';
+        }
+    });
+</script>
 </html>
