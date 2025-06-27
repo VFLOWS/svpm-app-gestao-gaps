@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GAP Details with Modal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script> window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <style>
+        ::-webkit-scrollbar { display: none;}
+        .modal-overlay {
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(2px);
+        }
+        .modal-enter-active, .modal-leave-active {
+            transition: opacity 0.3s, transform 0.3s;
+        }
+        .modal-enter-from, .modal-leave-to {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+    </style>
+</head>
+<body class="bg-secondary font-sans">
+    <!-- Conteúdo será adicionado aqui -->
+</body>
+</html>

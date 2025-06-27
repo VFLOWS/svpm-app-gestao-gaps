@@ -1,0 +1,258 @@
+<html><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script> window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <style>::-webkit-scrollbar { display: none;}</style>
+    <script>tailwind.config = {
+  "theme": {
+    "extend": {
+      "colors": {
+        "primary": "#2553A1",
+        "accent": "#22B07D",
+        "secondary": "#F7F9FB",
+        "error": "#DF3F40",
+        "border": "#E3E6EA"
+      },
+      "fontFamily": {
+        "sans": [
+          "Inter",
+          "sans-serif"
+        ]
+      }
+    }
+  }
+};</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;500;600;700;800;900&amp;display=swap"><style>
+      body {
+        font-family: 'Inter', sans-serif !important;
+      }
+      
+      /* Preserve Font Awesome icons */
+      .fa, .fas, .far, .fal, .fab {
+        font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands" !important;
+      }
+    </style><style>
+  .highlighted-section {
+    outline: 2px solid #3F20FB;
+    background-color: rgba(63, 32, 251, 0.1);
+  }
+
+  .edit-button {
+    position: absolute;
+    z-index: 1000;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  html, body {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  </style></head>
+<body class="bg-secondary font-sans">
+    <div id="gap-action-plan-screen-root" class="flex h-full min-h-[100vh]">
+        <aside id="sidebar" class="w-64 bg-white h-[100vh] fixed border-r border-border">
+            <div class="p-6">
+                <h1 class="text-xl font-semibold text-primary">Serra Verde</h1>
+                <p class="text-sm text-gray-500">GAP Management</p>
+            </div>
+            <nav class="mt-6">
+                <span class="flex items-center px-6 py-3 text-primary bg-blue-50 cursor-pointer">
+                    <i class="fa-solid fa-list-ul w-5"></i>
+                    <span class="ml-3">GAPs List</span>
+                </span>
+                <span class="flex items-center px-6 py-3 text-gray-600 hover:bg-secondary cursor-pointer">
+                    <i class="fa-solid fa-triangle-exclamation w-5"></i>
+                    <span class="ml-3">GAP Registration</span>
+                </span>
+                <span class="flex items-center px-6 py-3 text-gray-600 hover:bg-secondary cursor-pointer">
+                    <i class="fa-solid fa-list-check w-5"></i>
+                    <span class="ml-3">Action Plans</span>
+                </span>
+                <span class="flex items-center px-6 py-3 text-gray-600 hover:bg-secondary cursor-pointer">
+                    <i class="fa-solid fa-chart-line w-5"></i>
+                    <span class="ml-3">Follow-ups</span>
+                </span>
+                <span class="flex items-center px-6 py-3 text-gray-600 hover:bg-secondary cursor-pointer">
+                    <i class="fa-solid fa-check-double w-5"></i>
+                    <span class="ml-3">Validation</span>
+                </span>
+            </nav>
+        </aside>
+        <main id="main-action-plan-registration" class="ml-64 flex-1 min-h-[900px] p-8">
+            <header id="header" class="flex justify-between items-center mb-8">
+                <div>
+                    <h2 class="text-2xl font-medium text-gray-800">Register Action Plan</h2>
+                    <p class="text-gray-500">Create a new action plan for GAP-0021</p>
+                </div>
+                <div class="flex items-center gap-4">
+                    <button class="px-4 py-2 bg-white border border-border rounded-lg text-gray-600 hover:bg-secondary">
+                        <i class="fa-solid fa-bell mr-2"></i>
+                        <span class="bg-error text-white text-xs rounded-full px-1.5 py-0.5">3</span>
+                    </button>
+                    <div class="flex items-center gap-3 bg-white border border-border rounded-lg px-4 py-2">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" class="w-8 h-8 rounded-full">
+                        <div>
+                            <p class="text-sm font-medium">John Cooper</p>
+                            <p class="text-xs text-gray-500">Auditor</p>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <section id="gap-context-summary" class="bg-white rounded-lg border border-border p-8 mb-8 flex gap-10 flex-wrap">
+                <div class="flex-1 min-w-[340px]">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="bg-secondary rounded-md px-3 py-1 text-primary font-semibold text-base tracking-wide border border-border">GAP-0021</span>
+                        <span class="px-3 py-1 rounded text-white bg-error/90 text-sm font-semibold">High</span>
+                        <span class="px-3 py-1 rounded bg-accent/10 text-accent text-sm font-semibold">Open</span>
+                    </div>
+                    <h3 class="text-lg font-medium text-gray-800 mb-2">Routine inspection revealed improper storage of chemicals in warehouse area.</h3>
+                    <div class="grid grid-cols-2 gap-x-6 gap-y-3 mt-4 text-base">
+                        <div id="gap-root-cause">
+                            <p class="text-gray-500 font-medium">Possible Root Cause</p>
+                            <p class="text-gray-700">Insufficient staff training and lack of clear storage guidelines.</p>
+                        </div>
+                        <div id="gap-recurrence">
+                            <p class="text-gray-500 font-medium">Recurrence</p>
+                            <p class="text-gray-700">Recurring</p>
+                        </div>
+                        <div id="gap-initial-action-plan" class="col-span-2">
+                            <p class="text-gray-500 font-medium">Initial Action Plan Proposal</p>
+                            <p class="text-gray-700">Develop and implement a standardized chemical storage SOP and conduct training sessions for all warehouse staff.</p>
+                        </div>
+                    </div>
+                </div>
+                <div id="gap-attachments-responsibles" class="min-w-[320px] flex flex-col gap-8">
+                    <div id="gap-attachments" class="mb-3">
+                        <div class="flex items-center gap-2 mb-2">
+                            <i class="fa-solid fa-paperclip text-primary"></i>
+                            <span class="font-medium text-gray-700">Attachments</span>
+                        </div>
+                        <ul class="flex flex-col gap-2">
+                            <li class="flex items-center gap-3 p-2 bg-secondary rounded border border-border">
+                                <span class="truncate text-gray-700 flex-1">Inspection_Report_May24.pdf</span>
+                                <button title="Download" class="text-primary hover:text-accent">
+                                    <i class="fa-solid fa-download"></i>
+                                </button>
+                            </li>
+                            <li class="flex items-center gap-3 p-2 bg-secondary rounded border border-border">
+                                <span class="truncate text-gray-700 flex-1">Warehouse_Photo_01.jpg</span>
+                                <button title="Download" class="text-primary hover:text-accent">
+                                    <i class="fa-solid fa-download"></i>
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="gap-responsible-areas" class="">
+                        <div class="flex items-center gap-2 mb-2">
+                            <i class="fa-solid fa-users text-primary"></i>
+                            <span class="font-medium text-gray-700">Responsible Areas</span>
+                        </div>
+                        <ul class="flex flex-col gap-1">
+                            <li class="flex items-center gap-2 text-gray-700 p-2 bg-secondary rounded border border-border">
+                                <span class="inline-block w-2 h-2 bg-accent rounded-full"></span>
+                                <span class="font-semibold">Safety</span>
+                                <span class="mx-2 text-gray-400">•</span>
+                                <span class="text-gray-600">Maria Costa</span>
+                            </li>
+                            <li class="flex items-center gap-2 text-gray-700 p-2 bg-secondary rounded border border-border">
+                                <span class="inline-block w-2 h-2 bg-primary rounded-full"></span>
+                                <span class="font-semibold">Operations</span>
+                                <span class="mx-2 text-gray-400">•</span>
+                                <span class="text-gray-600">Carlos Ramos</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            <section id="action-plan-form-section" class="bg-white rounded-lg border border-border p-8">
+                <form id="action-plan-form" class="space-y-6">
+                    <div class="space-y-1">
+                        <label for="plan-title" class="block text-gray-700 font-medium text-sm">Action Plan Title<span class="text-error">*</span></label>
+                        <input type="text" id="plan-title" name="plan-title" required 
+                               class="w-full px-4 py-2 border border-border rounded-lg focus:ring-1 focus:ring-primary focus:border-primary"
+                               placeholder="Enter action plan title">
+                    </div>
+
+                    <div class="space-y-1">
+                        <label for="plan-description" class="block text-gray-700 font-medium text-sm">Description<span class="text-error">*</span></label>
+                        <textarea id="plan-description" name="plan-description" rows="4" required
+                                 class="w-full px-4 py-2 border border-border rounded-lg focus:ring-1 focus:ring-primary focus:border-primary"
+                                 placeholder="Describe the action plan in detail"></textarea>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="space-y-1">
+                            <label for="plan-deadline" class="block text-gray-700 font-medium text-sm">Deadline<span class="text-error">*</span></label>
+                            <input type="date" id="plan-deadline" name="plan-deadline" required
+                                   class="w-full px-4 py-2 border border-border rounded-lg focus:ring-1 focus:ring-primary focus:border-primary">
+                        </div>
+
+                        <div class="space-y-1">
+                            <label for="plan-executor" class="block text-gray-700 font-medium text-sm">Responsible<span class="text-error">*</span></label>
+                            <select id="plan-executor" name="plan-executor" required
+                                    class="w-full px-4 py-2 border border-border rounded-lg focus:ring-1 focus:ring-primary focus:border-primary">
+                                <option value="">Select responsible</option>
+                                <option value="maria-costa">Maria Costa</option>
+                                <option value="carlos-ramos">Carlos Ramos</option>
+                                <option value="ana-pereira">Ana Pereira</option>
+                                <option value="joao-souza">João Souza</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="space-y-1">
+                        <label class="block text-gray-700 font-medium text-sm">Attachments</label>
+                        <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-dashed border-border rounded-lg">
+                            <div class="space-y-1 text-center">
+                                <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true">
+                                    <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                                <div class="flex text-sm text-gray-600">
+                                    <label for="plan-attachments" class="relative cursor-pointer bg-white rounded-md font-medium text-primary hover:text-accent focus-within:outline-none">
+                                        <span>Upload files</span>
+                                        <input id="plan-attachments" name="plan-attachments" type="file" multiple class="sr-only">
+                                    </label>
+                                    <p class="pl-1">or drag and drop</p>
+                                </div>
+                                <p class="text-xs text-gray-500">
+                                    PDF, DOCX, JPG, PNG up to 10MB
+                                </p>
+                            </div>
+                        </div>
+                        <ul id="uploaded-files-list" class="mt-2 space-y-2"></ul>
+                    </div>
+
+                    <div class="flex justify-end space-x-4 pt-4 border-t border-border">
+                        <button type="button" onclick="history.back()" class="px-6 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
+                            Cancel
+                        </button>
+                        <button type="submit" class="px-6 py-2 border border-transparent rounded-lg shadow-sm text-white bg-primary hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
+                            Save Action Plan
+                        </button>
+                    </div>
+                </form>
+            </section>
+        </main>
+    </div>
+    <script>
+        document.getElementById('plan-attachments').addEventListener('change', function(e) {
+            const list = document.getElementById('uploaded-files-list');
+            list.innerHTML = '';
+            Array.from(this.files).forEach(file => {
+                const li = document.createElement('li');
+                li.className = "flex items-center gap-2 bg-secondary rounded border border-border px-3 py-1";
+                li.innerHTML = `<i class="fa-solid fa-paperclip text-primary"></i>
+                    <span class="truncate text-gray-700 flex-1">${file.name}</span>
+                    <span class="text-xs text-gray-400">${(file.size/1024).toFixed(1)} KB</span>`;
+                list.appendChild(li);
+            });
+        });
+    </script>
+
+</body></html>
