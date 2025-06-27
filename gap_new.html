@@ -62,26 +62,26 @@
                 <p class="text-sm text-gray-500">GAP Management</p>
             </div>
             <nav class="mt-6">
-                <span class="flex items-center px-6 py-3 text-gray-600 hover:bg-secondary cursor-pointer">
+                <a href="gap_dashboard.html" class="flex items-center px-6 py-3 text-primary bg-blue-50 cursor-pointer">
                     <i class="fa-solid fa-house w-5"></i>
                     <span class="ml-3">Dashboard</span>
-                </span>
-                <span class="flex items-center px-6 py-3 text-primary bg-blue-50 cursor-pointer">
+                </a>
+                <a href="gap_overview.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-secondary cursor-pointer">
                     <i class="fa-solid fa-triangle-exclamation w-5"></i>
-                    <span class="ml-3">GAP Registration</span>
-                </span>
-                <span class="flex items-center px-6 py-3 text-gray-600 hover:bg-secondary cursor-pointer">
+                    <span class="ml-3">GAP Overview</span>
+                </a>
+                <a href="#" class="flex items-center px-6 py-3 text-gray-600 hover:bg-secondary cursor-pointer">
                     <i class="fa-solid fa-list-check w-5"></i>
                     <span class="ml-3">Action Plans</span>
-                </span>
-                <span class="flex items-center px-6 py-3 text-gray-600 hover:bg-secondary cursor-pointer">
+                </a>
+                <a href="#" class="flex items-center px-6 py-3 text-gray-600 hover:bg-secondary cursor-pointer">
                     <i class="fa-solid fa-chart-line w-5"></i>
                     <span class="ml-3">Follow-ups</span>
-                </span>
-                <span class="flex items-center px-6 py-3 text-gray-600 hover:bg-secondary cursor-pointer">
+                </a>
+                <a href="#" class="flex items-center px-6 py-3 text-gray-600 hover:bg-secondary cursor-pointer">
                     <i class="fa-solid fa-check-double w-5"></i>
                     <span class="ml-3">Validation</span>
-                </span>
+                </a>
             </nav>
         </div>
         <main id="main-content" class="ml-64 flex-1 p-8 min-h-[900px]">
@@ -217,6 +217,61 @@
     </div>
 
     <script>
+        // Variável para controlar se o formulário foi alterado
+        let formChanged = false;
+        
+        // Verifica se o formulário foi alterado
+        function checkFormChanges() {
+            const form = document.querySelector('form');
+            if (!form) return false;
+            
+            const inputs = form.querySelectorAll('input, textarea, select');
+            for (let input of inputs) {
+                if (input.type === 'checkbox' || input.type === 'radio') {
+                    if (input.checked !== input.defaultChecked) return true;
+                } else if (input.value !== input.defaultValue) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        // Adiciona evento de mudança aos campos do formulário
+        document.querySelectorAll('input, textarea, select').forEach(input => {
+            input.addEventListener('change', () => {
+                formChanged = checkFormChanges();
+            });
+            
+            input.addEventListener('input', () => {
+                formChanged = true;
+            });
+        });
+
+        // Confirmação ao sair da página
+        window.addEventListener('beforeunload', function(e) {
+            if (formChanged) {
+                e.preventDefault();
+                e.returnValue = 'Você tem alterações não salvas. Tem certeza que deseja sair?';
+                return e.returnValue;
+            }
+        });
+
+        // Intercepta cliques em links de navegação
+        document.addEventListener('click', function(e) {
+            const link = e.target.closest('a');
+            if (link && formChanged) {
+                e.preventDefault();
+                if (confirm('Você tem alterações não salvas. Tem certeza que deseja sair? As alterações serão perdidas.')) {
+                    window.location.href = link.href;
+                }
+            }
+        }, true);
+
+        // Reseta o formChanged quando o formulário for enviado com sucesso
+        document.querySelector('form')?.addEventListener('submit', function() {
+            formChanged = false;
+        });
+
         // Função para adicionar estilos de erro
         function showError(input, message) {
             const formControl = input.closest('.flex.flex-col');
