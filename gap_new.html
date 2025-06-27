@@ -216,7 +216,71 @@
         </div>
     </div>
 
+    <!-- Modal de Confirmação -->
+    <div id="confirmModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-lg p-6 w-full max-w-md mx-4">
+            <div class="flex items-center mb-4">
+                <i class="fa-solid fa-triangle-exclamation text-yellow-500 text-2xl mr-3"></i>
+                <h3 class="text-lg font-medium text-gray-900">Atenção</h3>
+            </div>
+            <div class="mb-6">
+                <p class="text-gray-700">Tem certeza que deseja sair? As alterações não salvas serão perdidas.</p>
+            </div>
+            <div class="flex justify-end space-x-3">
+                <button id="cancelNav" class="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50">
+                    Cancelar
+                </button>
+                <button id="confirmNav" class="px-4 py-2 bg-error text-white rounded-md hover:bg-error/90">
+                    Sair sem salvar
+                </button>
+            </div>
+        </div>
+    </div>
+
     <script>
+        // Variáveis para controle de navegação
+        let navigationConfirmed = false;
+        let pendingNavigation = null;
+
+        // Mostra o modal de confirmação
+        function showConfirmModal() {
+            const modal = document.getElementById('confirmModal');
+            modal.classList.remove('hidden');
+            
+            return new Promise((resolve) => {
+                document.getElementById('confirmNav').onclick = () => {
+                    modal.classList.add('hidden');
+                    resolve(true);
+                };
+                
+                document.getElementById('cancelNav').onclick = () => {
+                    modal.classList.add('hidden');
+                    resolve(false);
+                };
+                
+                // Fecha ao clicar fora do modal
+                modal.onclick = (e) => {
+                    if (e.target === modal) {
+                        modal.classList.add('hidden');
+                        resolve(false);
+                    }
+                };
+            });
+        }
+
+        // Intercepta cliques em links de navegação
+        document.addEventListener('click', async function(e) {
+            const link = e.target.closest('a');
+            if (link && !link.href.includes('#') && !link.classList.contains('no-confirm')) {
+                e.preventDefault();
+                
+                const confirmed = await showConfirmModal();
+                if (confirmed) {
+                    window.location.href = link.href;
+                }
+            }
+        }, true);
+
         // Variável para controlar se o formulário foi alterado
         let formChanged = false;
         
@@ -255,17 +319,6 @@
                 return e.returnValue;
             }
         });
-
-        // Intercepta cliques em links de navegação
-        document.addEventListener('click', function(e) {
-            const link = e.target.closest('a');
-            if (link && !link.href.includes('#')) {  
-                e.preventDefault();
-                if (confirm('Tem certeza que deseja sair? As alterações não salvas serão perdidas.')) {
-                    window.location.href = link.href;
-                }
-            }
-        }, true);
 
         // Reseta o formChanged quando o formulário for enviado com sucesso
         document.querySelector('form')?.addEventListener('submit', function() {
