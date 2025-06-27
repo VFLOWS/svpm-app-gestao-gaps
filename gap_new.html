@@ -259,9 +259,9 @@
         // Intercepta cliques em links de navegação
         document.addEventListener('click', function(e) {
             const link = e.target.closest('a');
-            if (link && formChanged) {
+            if (link && !link.href.includes('#')) {  
                 e.preventDefault();
-                if (confirm('Você tem alterações não salvas. Tem certeza que deseja sair? As alterações serão perdidas.')) {
+                if (confirm('Tem certeza que deseja sair? As alterações não salvas serão perdidas.')) {
                     window.location.href = link.href;
                 }
             }
