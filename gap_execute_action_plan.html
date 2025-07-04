@@ -1,0 +1,417 @@
+<html><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script> window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <style>::-webkit-scrollbar { display: none;}</style>
+    <script>tailwind.config = {
+  "theme": {
+    "extend": {
+      "colors": {
+        "primary": "#2553A1",
+        "accent": "#22B07D",
+        "secondary": "#F7F9FB",
+        "error": "#DF3F40",
+        "border": "#E3E6EA"
+      },
+      "fontFamily": {
+        "sans": [
+          "Inter",
+          "sans-serif"
+        ]
+      }
+    }
+  }
+};</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;500;600;700;800;900&amp;display=swap"><style>
+      body {
+        font-family: 'Inter', sans-serif !important;
+      }
+      
+      /* Preserve Font Awesome icons */
+      .fa, .fas, .far, .fal, .fab {
+        font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands" !important;
+      }
+    </style><style>
+  .highlighted-section {
+    outline: 2px solid #3F20FB;
+    background-color: rgba(63, 32, 251, 0.1);
+  }
+
+  .edit-button {
+    position: absolute;
+    z-index: 1000;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  html, body {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  </style></head>
+<body class="bg-secondary font-sans">
+    <div id="execute-root" class="flex min-h-[100vh] h-full">
+        <aside id="sidebar" class="w-64 bg-white h-[100vh] fixed border-r border-border">
+            <div class="p-6">
+                <h1 class="text-xl font-semibold text-primary">Serra Verde</h1>
+                <p class="text-sm text-gray-500">GAP Management</p>
+            </div>
+            <nav class="mt-6">
+                <span class="flex items-center px-6 py-3 text-primary bg-blue-50 cursor-pointer">
+                    <i class="fa-solid fa-list-ul w-5"></i>
+                    <span class="ml-3">GAPs List</span>
+                </span>
+                <span class="flex items-center px-6 py-3 text-gray-600 hover:bg-secondary cursor-pointer">
+                    <i class="fa-solid fa-triangle-exclamation w-5"></i>
+                    <span class="ml-3">GAP Registration</span>
+                </span>
+                <span class="flex items-center px-6 py-3 text-gray-600 hover:bg-secondary cursor-pointer">
+                    <i class="fa-solid fa-list-check w-5"></i>
+                    <span class="ml-3">Action Plans</span>
+                </span>
+                <span class="flex items-center px-6 py-3 text-gray-600 hover:bg-secondary cursor-pointer">
+                    <i class="fa-solid fa-chart-line w-5"></i>
+                    <span class="ml-3">Follow-ups</span>
+                </span>
+                <span class="flex items-center px-6 py-3 text-gray-600 hover:bg-secondary cursor-pointer">
+                    <i class="fa-solid fa-check-double w-5"></i>
+                    <span class="ml-3">Validation</span>
+                </span>
+            </nav>
+        </aside>
+        <main id="main-execute" class="ml-64 flex-1 min-h-[1200px] p-8 bg-secondary flex flex-col gap-8">
+            <header id="header" class="flex justify-between items-center mb-8">
+                <div class="flex items-center gap-4">
+                    <button onclick="history.back()" class="flex items-center gap-2 text-primary font-medium px-3 py-2 rounded hover:bg-blue-50 transition" id="breadcrumb-back-btn">
+                        <i class="fa-solid fa-arrow-left"></i>
+                        <span>Back to Action Plans</span>
+                    </button>
+                    <span class="mx-1 text-gray-300 text-xl">•</span>
+                    <h2 class="text-2xl font-medium text-gray-800">Execute Action Plan</h2>
+                </div>
+                <div class="flex items-center gap-4">
+                    <button class="px-4 py-2 bg-white border border-border rounded-lg text-gray-600 hover:bg-secondary">
+                        <i class="fa-solid fa-bell mr-2"></i>
+                        <span class="bg-error text-white text-xs rounded-full px-1.5 py-0.5">2</span>
+                    </button>
+                    <div class="flex items-center gap-3 bg-white border border-border rounded-lg px-4 py-2">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-6.jpg" class="w-8 h-8 rounded-full">
+                        <div>
+                            <p class="text-sm font-medium">Maria Costa</p>
+                            <p class="text-xs text-gray-500">Area Responsible</p>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <section id="gap-header-section" class="bg-white rounded-lg border border-border p-8 flex flex-col gap-5 mb-8">
+                <div class="flex flex-wrap gap-6 items-center">
+                    <span class="bg-secondary rounded-md px-3 py-1 text-primary font-semibold text-base tracking-wide border border-border">GAP-0021</span>
+                    <span class="px-3 py-1 rounded text-white bg-error/90 text-sm font-semibold">High</span>
+                    <span class="px-3 py-1 rounded bg-accent/10 text-accent text-sm font-semibold">Open</span>
+                    <span class="flex items-center gap-2 ml-4">
+                        <i class="fa-solid fa-users text-primary"></i>
+                        <span class="font-medium text-gray-700">Area:</span>
+                        <span class="font-semibold text-gray-700">Safety</span>
+                    </span>
+                    <span class="flex items-center gap-2 ml-4">
+                        <i class="fa-regular fa-user text-primary"></i>
+                        <span class="font-medium text-gray-700">Responsible:</span>
+                        <span class="font-semibold text-gray-700">Maria Costa</span>
+                    </span>
+                </div>
+                <div>
+                    <h3 class="text-lg font-medium text-gray-800 mb-1">Routine inspection revealed improper storage of chemicals in warehouse area.</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-y-2 gap-x-10 text-base">
+                        <div>
+                            <span class="text-gray-500 font-medium">Root Cause: </span>
+                            <span class="text-gray-700">Insufficient staff training and lack of clear storage guidelines.</span>
+                        </div>
+                        <div>
+                            <span class="text-gray-500 font-medium">Initial Action Proposal: </span>
+                            <span class="text-gray-700">Update staff training and implement new storage SOP.</span>
+                        </div>
+                        <div>
+                            <span class="text-gray-500 font-medium">Recurrence: </span>
+                            <span class="text-gray-700">Recurring</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="action-plan-info-section" class="bg-white rounded-lg border border-border p-8 flex flex-col md:flex-row gap-10 mb-8">
+                <div class="flex-1 flex flex-col gap-4">
+                    <h4 class="text-lg font-semibold text-primary flex items-center gap-2">
+                        <i class="fa-solid fa-list-check"></i> Action Plan Information
+                    </h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-3">
+                        <div>
+                            <span class="text-gray-700 font-medium text-sm">Plan Title</span>
+                            <div class="text-base text-gray-900 font-medium">Implement Chemical Storage SOP</div>
+                        </div>
+                        <div>
+                            <span class="text-gray-700 font-medium text-sm">Responsible for Execution</span>
+                            <div class="text-base text-gray-900 font-medium">Maria Costa</div>
+                        </div>
+                        <div>
+                            <span class="text-gray-700 font-medium text-sm">Deadline for Completion</span>
+                            <div class="text-base text-gray-800">2024-07-15</div>
+                        </div>
+                        <div class="md:col-span-2 flex flex-col gap-1 mt-1">
+                            <span class="text-gray-700 font-medium text-sm">Attachments</span>
+                            <ul class="flex flex-col gap-2 mt-1 max-w-xs">
+                                <li class="flex items-center gap-2 bg-secondary rounded border border-border px-3 py-1">
+                                    <i class="fa-solid fa-paperclip text-primary"></i>
+                                    <span class="truncate flex-1 text-gray-700">storage_sop_draft.pdf</span>
+                                    <button class="text-primary hover:underline text-sm"><i class="fa-solid fa-download"></i></button>
+                                </li>
+                                <li class="flex items-center gap-2 bg-secondary rounded border border-border px-3 py-1">
+                                    <i class="fa-solid fa-paperclip text-primary"></i>
+                                    <span class="truncate flex-1 text-gray-700">training_plan.docx</span>
+                                    <button class="text-primary hover:underline text-sm"><i class="fa-solid fa-download"></i></button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="execution-panel" class="bg-white rounded-lg border border-border p-8 flex flex-col gap-6">
+                <h4 class="text-lg font-semibold text-primary flex items-center gap-2 mb-2">
+                    <i class="fa-solid fa-gears"></i> Action Plan Execution
+                </h4>
+
+                <div id="phases-stepper" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div id="phase-card-planning" class="flex flex-col gap-4 bg-secondary border border-border rounded-lg px-5 py-6">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-primary text-white text-lg">
+                                <i class="fa-solid fa-lightbulb"></i>
+                            </span>
+                            <span class="font-semibold text-primary text-base">Planning</span>
+                        </div>
+                        <div>
+                            <label class="text-gray-700 font-medium text-sm mb-1 block">Status</label>
+                            <select class="w-full rounded border border-border px-3 py-1.5 text-base text-gray-700 bg-white focus:outline-none focus:border-primary" id="status-planning">
+                                <option value="pending">Pending</option>
+                                <option value="inprogress">In Progress</option>
+                                <option value="completed">Completed</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="text-gray-700 font-medium text-sm mb-1 block">Phase Comment</label>
+                            <textarea rows="2" id="comment-planning" placeholder="Describe planning actions..." class="w-full rounded-md border border-border bg-white px-3 py-2 text-gray-700 text-base focus:outline-none focus:border-primary placeholder-gray-400 transition resize-none"></textarea>
+                        </div>
+                        <div>
+                            <label class="text-gray-700 font-medium text-sm mb-1 block">Attach Evidence</label>
+                            <div class="flex flex-col items-center justify-center border-2 border-dashed border-border rounded-md bg-white p-2 gap-2 transition hover:border-primary cursor-pointer phase-upload-box" data-phase="planning">
+                                <i class="fa-solid fa-cloud-arrow-up text-primary text-xl"></i>
+                                <span class="text-xs text-gray-500">Drag &amp; drop or click to select</span>
+                                <input type="file" class="hidden phase-files" id="file-planning" multiple="">
+                            </div>
+                            <div class="flex flex-col gap-1 mt-2 phase-attachment-list" id="attachment-list-planning"></div>
+                        </div>
+                        <div class="flex items-center gap-2 text-xs text-gray-500 mt-1" id="completed-by-planning">
+                            <i class="fa-regular fa-user"></i> <span class="font-medium">Not completed</span>
+                        </div>
+                    </div>
+                    <div id="phase-card-execution" class="flex flex-col gap-4 bg-secondary border border-border rounded-lg px-5 py-6">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-primary text-white text-lg">
+                                <i class="fa-solid fa-play"></i>
+                            </span>
+                            <span class="font-semibold text-primary text-base">Execution</span>
+                        </div>
+                        <div>
+                            <label class="text-gray-700 font-medium text-sm mb-1 block">Status</label>
+                            <select class="w-full rounded border border-border px-3 py-1.5 text-base text-gray-700 bg-white focus:outline-none focus:border-primary" id="status-execution">
+                                <option value="pending">Pending</option>
+                                <option value="inprogress">In Progress</option>
+                                <option value="completed">Completed</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="text-gray-700 font-medium text-sm mb-1 block">Phase Comment</label>
+                            <textarea rows="2" id="comment-execution" placeholder="Describe execution actions..." class="w-full rounded-md border border-border bg-white px-3 py-2 text-gray-700 text-base focus:outline-none focus:border-primary placeholder-gray-400 transition resize-none"></textarea>
+                        </div>
+                        <div>
+                            <label class="text-gray-700 font-medium text-sm mb-1 block">Attach Evidence</label>
+                            <div class="flex flex-col items-center justify-center border-2 border-dashed border-border rounded-md bg-white p-2 gap-2 transition hover:border-primary cursor-pointer phase-upload-box" data-phase="execution">
+                                <i class="fa-solid fa-cloud-arrow-up text-primary text-xl"></i>
+                                <span class="text-xs text-gray-500">Drag &amp; drop or click to select</span>
+                                <input type="file" class="hidden phase-files" id="file-execution" multiple="">
+                            </div>
+                            <div class="flex flex-col gap-1 mt-2 phase-attachment-list" id="attachment-list-execution"></div>
+                        </div>
+                        <div class="flex items-center gap-2 text-xs text-gray-500 mt-1" id="completed-by-execution">
+                            <i class="fa-regular fa-user"></i> <span class="font-medium">Not completed</span>
+                        </div>
+                    </div>
+                    <div id="phase-card-review" class="flex flex-col gap-4 bg-secondary border border-border rounded-lg px-5 py-6">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-primary text-white text-lg">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </span>
+                            <span class="font-semibold text-primary text-base">Review</span>
+                        </div>
+                        <div>
+                            <label class="text-gray-700 font-medium text-sm mb-1 block">Status</label>
+                            <select class="w-full rounded border border-border px-3 py-1.5 text-base text-gray-700 bg-white focus:outline-none focus:border-primary" id="status-review">
+                                <option value="pending">Pending</option>
+                                <option value="inprogress">In Progress</option>
+                                <option value="completed">Completed</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="text-gray-700 font-medium text-sm mb-1 block">Phase Comment</label>
+                            <textarea rows="2" id="comment-review" placeholder="Describe review actions..." class="w-full rounded-md border border-border bg-white px-3 py-2 text-gray-700 text-base focus:outline-none focus:border-primary placeholder-gray-400 transition resize-none"></textarea>
+                        </div>
+                        <div>
+                            <label class="text-gray-700 font-medium text-sm mb-1 block">Attach Evidence</label>
+                            <div class="flex flex-col items-center justify-center border-2 border-dashed border-border rounded-md bg-white p-2 gap-2 transition hover:border-primary cursor-pointer phase-upload-box" data-phase="review">
+                                <i class="fa-solid fa-cloud-arrow-up text-primary text-xl"></i>
+                                <span class="text-xs text-gray-500">Drag &amp; drop or click to select</span>
+                                <input type="file" class="hidden phase-files" id="file-review" multiple="">
+                            </div>
+                            <div class="flex flex-col gap-1 mt-2 phase-attachment-list" id="attachment-list-review"></div>
+                        </div>
+                        <div class="flex items-center gap-2 text-xs text-gray-500 mt-1" id="completed-by-review">
+                            <i class="fa-regular fa-user"></i> <span class="font-medium">Not completed</span>
+                        </div>
+                    </div>
+                    <div id="phase-card-validation" class="flex flex-col gap-4 bg-secondary border border-border rounded-lg px-5 py-6">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-primary text-white text-lg">
+                                <i class="fa-solid fa-circle-check"></i>
+                            </span>
+                            <span class="font-semibold text-primary text-base">Validation</span>
+                        </div>
+                        <div>
+                            <label class="text-gray-700 font-medium text-sm mb-1 block">Status</label>
+                            <select class="w-full rounded border border-border px-3 py-1.5 text-base text-gray-700 bg-white focus:outline-none focus:border-primary" id="status-validation">
+                                <option value="pending">Pending</option>
+                                <option value="inprogress">In Progress</option>
+                                <option value="completed">Completed</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="text-gray-700 font-medium text-sm mb-1 block">Phase Comment</label>
+                            <textarea rows="2" id="comment-validation" placeholder="Describe validation actions..." class="w-full rounded-md border border-border bg-white px-3 py-2 text-gray-700 text-base focus:outline-none focus:border-primary placeholder-gray-400 transition resize-none"></textarea>
+                        </div>
+                        <div>
+                            <label class="text-gray-700 font-medium text-sm mb-1 block">Attach Evidence</label>
+                            <div class="flex flex-col items-center justify-center border-2 border-dashed border-border rounded-md bg-white p-2 gap-2 transition hover:border-primary cursor-pointer phase-upload-box" data-phase="validation">
+                                <i class="fa-solid fa-cloud-arrow-up text-primary text-xl"></i>
+                                <span class="text-xs text-gray-500">Drag &amp; drop or click to select</span>
+                                <input type="file" class="hidden phase-files" id="file-validation" multiple="">
+                            </div>
+                            <div class="flex flex-col gap-1 mt-2 phase-attachment-list" id="attachment-list-validation"></div>
+                        </div>
+                        <div class="flex items-center gap-2 text-xs text-gray-500 mt-1" id="completed-by-validation">
+                            <i class="fa-regular fa-user"></i> <span class="font-medium">Not completed</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex justify-end mt-8">
+                    <button id="submit-progress-btn" class="bg-accent hover:bg-accent/90 transition text-white font-medium px-8 py-3 rounded-md text-lg flex items-center gap-2 shadow-sm">
+                        <i class="fa-solid fa-paper-plane"></i> Submit Progress
+                    </button>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script>
+        // Helper for avatar name and time
+        const responsibleName = "Maria Costa";
+        const responsibleAvatar = "https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-6.jpg";
+
+        // Set up phase selectors, evidence, and completion display
+        const phases = [
+            { key: 'planning', label: 'Planning' },
+            { key: 'execution', label: 'Execution' },
+            { key: 'review', label: 'Review' },
+            { key: 'validation', label: 'Validation' }
+        ];
+
+        phases.forEach(phase => {
+            // Upload evidence
+            const uploadBox = document.querySelector(`.phase-upload-box[data-phase="${phase.key}"]`);
+            const fileInput = document.getElementById(`file-${phase.key}`);
+            const attachmentList = document.getElementById(`attachment-list-${phase.key}`);
+
+            uploadBox.addEventListener('click', () => fileInput.click());
+            uploadBox.addEventListener('drop', (e) => {
+                e.preventDefault();
+                fileInput.files = e.dataTransfer.files;
+                renderPhaseAttachmentList(phase.key);
+            });
+            uploadBox.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                uploadBox.classList.add('border-primary');
+            });
+            uploadBox.addEventListener('dragleave', (e) => {
+                uploadBox.classList.remove('border-primary');
+            });
+            fileInput.addEventListener('change', () => renderPhaseAttachmentList(phase.key));
+
+            // Status change update
+            const statusSelect = document.getElementById(`status-${phase.key}`);
+            const completedBy = document.getElementById(`completed-by-${phase.key}`);
+            statusSelect.addEventListener('change', function() {
+                if (statusSelect.value === 'completed') {
+                    const now = new Date();
+                    const date = now.toISOString().slice(0, 10);
+                    const time = now.toTimeString().slice(0,5);
+                    completedBy.innerHTML = `<img src="${responsibleAvatar}" class="w-5 h-5 rounded-full inline-block mr-1 -mt-1"> <span class="font-medium text-primary">${responsibleName}</span> <span class="text-gray-400">on</span> <span class="font-semibold">${date} ${time}</span>`;
+                } else {
+                    completedBy.innerHTML = `<i class="fa-regular fa-user"></i> <span class="font-medium">Not completed</span>`;
+                }
+            });
+        });
+
+        function renderPhaseAttachmentList(phaseKey) {
+            const fileInput = document.getElementById(`file-${phaseKey}`);
+            const attachmentList = document.getElementById(`attachment-list-${phaseKey}`);
+            attachmentList.innerHTML = '';
+            const files = fileInput.files;
+            if (files && files.length) {
+                Array.from(files).forEach((file, idx) => {
+                    const li = document.createElement('div');
+                    li.className = 'flex items-center gap-2 bg-secondary rounded border border-border px-2 py-1 text-xs';
+                    li.innerHTML = `<i class="fa-solid fa-paperclip text-primary"></i>
+                        <span class="truncate flex-1 text-gray-700">${file.name}</span>
+                        <button type="button" class="text-error hover:underline" onclick="removePhaseFile('${phaseKey}',${idx})"><i class="fa-solid fa-xmark"></i></button>`;
+                    attachmentList.appendChild(li);
+                });
+            }
+        }
+        function removePhaseFile(phaseKey, idx) {
+            const fileInput = document.getElementById(`file-${phaseKey}`);
+            const dt = new DataTransfer();
+            const files = fileInput.files;
+            Array.from(files).forEach((file, i) => { if (i !== idx) dt.items.add(file); });
+            fileInput.files = dt.files;
+            renderPhaseAttachmentList(phaseKey);
+        }
+
+        // Submit Progress Handler
+        document.getElementById('submit-progress-btn').addEventListener('click', function() {
+            let filled = true;
+            phases.forEach(phase => {
+                const status = document.getElementById(`status-${phase.key}`).value;
+                const comment = document.getElementById(`comment-${phase.key}`).value.trim();
+                if (status !== 'pending' && !comment) filled = false;
+            });
+            if (!filled) {
+                alert("Please provide comments for each phase that is not pending.");
+                return;
+            }
+            alert('Action Plan progress submitted successfully!');
+        });
+    </script>
+
+</body></html>  

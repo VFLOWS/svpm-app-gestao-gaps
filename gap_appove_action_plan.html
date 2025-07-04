@@ -1,0 +1,279 @@
+<html><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script> window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <style>::-webkit-scrollbar { display: none;}</style>
+    <script>tailwind.config = {
+  "theme": {
+    "extend": {
+      "colors": {
+        "primary": "#2553A1",
+        "accent": "#22B07D",
+        "secondary": "#F7F9FB",
+        "error": "#DF3F40",
+        "border": "#E3E6EA"
+      },
+      "fontFamily": {
+        "sans": [
+          "Inter",
+          "sans-serif"
+        ]
+      }
+    }
+  }
+};</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;500;600;700;800;900&amp;display=swap"><style>
+      body {
+        font-family: 'Inter', sans-serif !important;
+      }
+      
+      /* Preserve Font Awesome icons */
+      .fa, .fas, .far, .fal, .fab {
+        font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands" !important;
+      }
+    </style><style>
+  .highlighted-section {
+    outline: 2px solid #3F20FB;
+    background-color: rgba(63, 32, 251, 0.1);
+  }
+
+  .edit-button {
+    position: absolute;
+    z-index: 1000;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  html, body {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  </style></head>
+<body class="bg-secondary font-sans">
+    <div id="approve-action-plan-root" class="flex min-h-[100vh] h-full">
+        <aside id="sidebar" class="w-64 bg-white h-[100vh] fixed border-r border-border">
+            <div class="p-6">
+                <h1 class="text-xl font-semibold text-primary">Serra Verde</h1>
+                <p class="text-sm text-gray-500">GAP Management</p>
+            </div>
+            <nav class="mt-6">
+                <span class="flex items-center px-6 py-3 text-primary bg-blue-50 cursor-pointer">
+                    <i class="fa-solid fa-list-ul w-5"></i>
+                    <span class="ml-3">GAPs List</span>
+                </span>
+                <span class="flex items-center px-6 py-3 text-gray-600 hover:bg-secondary cursor-pointer">
+                    <i class="fa-solid fa-triangle-exclamation w-5"></i>
+                    <span class="ml-3">GAP Registration</span>
+                </span>
+                <span class="flex items-center px-6 py-3 text-gray-600 hover:bg-secondary cursor-pointer">
+                    <i class="fa-solid fa-list-check w-5"></i>
+                    <span class="ml-3">Action Plans</span>
+                </span>
+                <span class="flex items-center px-6 py-3 text-gray-600 hover:bg-secondary cursor-pointer">
+                    <i class="fa-solid fa-chart-line w-5"></i>
+                    <span class="ml-3">Follow-ups</span>
+                </span>
+                <span class="flex items-center px-6 py-3 text-gray-600 hover:bg-secondary cursor-pointer">
+                    <i class="fa-solid fa-check-double w-5"></i>
+                    <span class="ml-3">Validation</span>
+                </span>
+            </nav>
+        </aside>
+        <main id="main-approve-action-plan" class="ml-64 flex-1 min-h-[1100px] p-8">
+            <header id="header" class="flex justify-between items-center mb-8">
+                <div class="flex items-center gap-4">
+                    <button onclick="history.back()" class="flex items-center gap-2 text-primary font-medium px-3 py-2 rounded hover:bg-blue-50 transition" id="breadcrumb-back-btn">
+                        <i class="fa-solid fa-arrow-left"></i>
+                        <span>Back to GAP Details</span>
+                    </button>
+                    <span class="mx-1 text-gray-300 text-xl">•</span>
+                    <h2 class="text-2xl font-medium text-gray-800">Approve Action Plan</h2>
+                </div>
+                <div class="flex items-center gap-4">
+                    <button class="px-4 py-2 bg-white border border-border rounded-lg text-gray-600 hover:bg-secondary">
+                        <i class="fa-solid fa-bell mr-2"></i>
+                        <span class="bg-error text-white text-xs rounded-full px-1.5 py-0.5">3</span>
+                    </button>
+                    <div class="flex items-center gap-3 bg-white border border-border rounded-lg px-4 py-2">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" class="w-8 h-8 rounded-full">
+                        <div>
+                            <p class="text-sm font-medium">John Cooper</p>
+                            <p class="text-xs text-gray-500">Auditor</p>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <section id="gap-header-section" class="bg-white rounded-lg border border-border p-8 mb-10 flex flex-col gap-5">
+                <div class="flex flex-wrap gap-6 items-center">
+                    <span class="bg-secondary rounded-md px-3 py-1 text-primary font-semibold text-base tracking-wide border border-border">GAP-0021</span>
+                    <span class="px-3 py-1 rounded text-white bg-error/90 text-sm font-semibold">High</span>
+                    <span class="px-3 py-1 rounded bg-accent/10 text-accent text-sm font-semibold">Open</span>
+                    <span class="flex items-center gap-2 ml-4">
+                        <i class="fa-solid fa-users text-primary"></i>
+                        <span class="font-medium text-gray-700">Area:</span>
+                        <span class="font-semibold text-gray-700">Safety</span>
+                    </span>
+                    <span class="flex items-center gap-2 ml-4">
+                        <i class="fa-regular fa-user text-primary"></i>
+                        <span class="font-medium text-gray-700">Responsible:</span>
+                        <span class="font-semibold text-gray-700">Maria Costa</span>
+                    </span>
+                </div>
+                <div class="mt-2">
+                    <h3 class="text-lg font-medium text-gray-800 mb-1">Routine inspection revealed improper storage of chemicals in warehouse area.</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-y-2 gap-x-10 text-base">
+                        <div>
+                            <span class="text-gray-500 font-medium">Root Cause: </span>
+                            <span class="text-gray-700">Insufficient staff training and lack of clear storage guidelines.</span>
+                        </div>
+                        <div>
+                            <span class="text-gray-500 font-medium">Initial Action Proposal: </span>
+                            <span class="text-gray-700">Update staff training and implement new storage SOP.</span>
+                        </div>
+                        <div>
+                            <span class="text-gray-500 font-medium">Recurrence: </span>
+                            <span class="text-gray-700">Recurring</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2 mt-2">
+                        <span class="text-gray-500 font-medium">Effectiveness:</span>
+                        <div class="flex items-center">
+                            <i class="fa-solid fa-star text-accent"></i>
+                            <i class="fa-solid fa-star text-accent"></i>
+                            <i class="fa-solid fa-star text-accent"></i>
+                            <i class="fa-solid fa-star text-accent"></i>
+                            <i class="fa-regular fa-star text-accent"></i>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="action-plan-card-section" class="bg-white rounded-lg border border-border p-8 mb-10 flex flex-col gap-6 max-w-3xl mx-auto">
+                <div class="flex flex-col gap-3">
+                    <h3 class="text-lg font-semibold text-primary flex items-center gap-2">
+                        <i class="fa-solid fa-list-check"></i> Action Plan Submitted
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="flex flex-col gap-1">
+                            <span class="text-gray-700 font-medium text-sm">Plan Title</span>
+                            <span class="text-base text-gray-900 font-medium">Implement Chemical Storage SOP</span>
+                        </div>
+                        <div class="flex flex-col gap-1">
+                            <span class="text-gray-700 font-medium text-sm">Execution Responsible</span>
+                            <span class="text-base text-gray-900 font-medium">Carlos Ramos</span>
+                        </div>
+                        <div class="flex flex-col gap-1">
+                            <span class="text-gray-700 font-medium text-sm">Deadline</span>
+                            <span class="text-base text-gray-900 font-medium">2024-07-15</span>
+                        </div>
+                        <div class="flex flex-col gap-1 md:col-span-2">
+                            <span class="text-gray-700 font-medium text-sm">Description</span>
+                            <span class="text-base text-gray-800">Develop and roll out a new chemical storage standard operating procedure, with mandatory training for all warehouse staff. Conduct initial audit to verify compliance.</span>
+                        </div>
+                        <div class="flex flex-col gap-1 md:col-span-2">
+                            <span class="text-gray-700 font-medium text-sm">Attachments</span>
+                            <ul class="flex flex-col gap-2 mt-1">
+                                <li class="flex items-center gap-2 bg-secondary rounded border border-border px-3 py-1 max-w-xs">
+                                    <i class="fa-solid fa-paperclip text-primary"></i>
+                                    <span class="truncate flex-1 text-gray-700">storage_sop_draft.pdf</span>
+                                    <button class="text-primary hover:underline text-sm"><i class="fa-solid fa-download"></i></button>
+                                </li>
+                                <li class="flex items-center gap-2 bg-secondary rounded border border-border px-3 py-1 max-w-xs">
+                                    <i class="fa-solid fa-paperclip text-primary"></i>
+                                    <span class="truncate flex-1 text-gray-700">training_plan.docx</span>
+                                    <button class="text-primary hover:underline text-sm"><i class="fa-solid fa-download"></i></button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="approval-decision-section" class="bg-white rounded-lg border border-border p-8 mb-10 max-w-3xl mx-auto flex flex-col gap-8">
+                <form id="approve-action-plan-form" class="flex flex-col gap-8">
+                    <div class="flex flex-col gap-4">
+                        <h4 class="text-lg font-semibold text-primary flex items-center gap-2">
+                            <i class="fa-solid fa-clipboard-check"></i> Approval Decision
+                        </h4>
+                        <div class="flex flex-col md:flex-row gap-6 md:items-center">
+                            <div class="flex items-center gap-5">
+                                <label class="flex items-center gap-2 cursor-pointer">
+                                    <input type="radio" name="approval" value="approve" class="accent-accent w-5 h-5" checked="">
+                                    <span class="text-base text-gray-700 font-medium">Approve</span>
+                                </label>
+                                <label class="flex items-center gap-2 cursor-pointer">
+                                    <input type="radio" name="approval" value="reject" class="accent-error w-5 h-5">
+                                    <span class="text-base text-gray-700 font-medium">Reject</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div id="justification-field-wrapper" class="flex flex-col gap-1 hidden">
+                            <label for="justification" class="text-gray-700 font-medium text-sm mb-1">Justification <span class="text-error">*</span></label>
+                            <textarea id="justification" name="justification" rows="3" class="w-full rounded-md border border-border bg-secondary px-4 py-2 text-gray-700 text-base focus:outline-none focus:border-error placeholder-gray-400 transition resize-none" placeholder="Provide a reason for rejection"></textarea>
+                        </div>
+                    </div>
+                    <div class="flex flex-col md:flex-row gap-6">
+                        <div class="flex flex-col gap-1 flex-1 min-w-[180px]">
+                            <label for="followup-start-date" class="text-gray-700 font-medium text-sm mb-1">Start Date of Follow-up</label>
+                            <input type="date" id="followup-start-date" name="followup-start-date" class="w-full rounded-md border border-border bg-secondary px-4 py-2 text-gray-700 text-base focus:outline-none focus:border-primary transition">
+                        </div>
+                        <div class="flex flex-col gap-1 flex-1 min-w-[180px]">
+                            <label for="expected-completion-date" class="text-gray-700 font-medium text-sm mb-1">Expected Completion Date</label>
+                            <input type="date" id="expected-completion-date" name="expected-completion-date" class="w-full rounded-md border border-border bg-secondary px-4 py-2 text-gray-700 text-base focus:outline-none focus:border-primary transition">
+                        </div>
+                    </div>
+                    <div class="flex gap-4 mt-6">
+                        <button type="submit" class="flex-1 bg-accent hover:bg-accent/90 transition text-white font-medium px-6 py-2 rounded-md text-base flex items-center justify-center gap-2" id="submit-decision-btn">
+                            <i class="fa-solid fa-paper-plane"></i>
+                            Submit Decision
+                        </button>
+                        <button type="button" onclick="history.back()" class="flex-1 bg-white border border-border text-gray-600 hover:bg-secondary font-medium px-6 py-2 rounded-md text-base flex items-center justify-center gap-2" id="back-to-gap-details-btn">
+                            <i class="fa-solid fa-arrow-left"></i>
+                            Back to GAP Details
+                        </button>
+                    </div>
+                </form>
+            </section>
+        </main>
+    </div>
+    <script>
+        // Approval radio logic for justification field
+        const approvalRadios = document.querySelectorAll('input[name="approval"]');
+        const justificationWrapper = document.getElementById('justification-field-wrapper');
+        const justificationTextarea = document.getElementById('justification');
+        approvalRadios.forEach(radio => {
+            radio.addEventListener('change', function() {
+                if (this.value === 'reject') {
+                    justificationWrapper.classList.remove('hidden');
+                    justificationTextarea.setAttribute('required', 'required');
+                    justificationTextarea.classList.remove('focus:border-primary');
+                    justificationTextarea.classList.add('focus:border-error');
+                } else {
+                    justificationWrapper.classList.add('hidden');
+                    justificationTextarea.removeAttribute('required');
+                    justificationTextarea.value = '';
+                    justificationTextarea.classList.remove('focus:border-error');
+                    justificationTextarea.classList.add('focus:border-primary');
+                }
+            });
+        });
+        // On page load, ensure "approve" selected state is correct
+        if(document.querySelector('input[name="approval"]:checked').value === 'reject'){
+            justificationWrapper.classList.remove('hidden');
+            justificationTextarea.setAttribute('required', 'required');
+        }
+        // Optional: Form validation
+        document.getElementById('approve-action-plan-form').addEventListener('submit', function(e) {
+            const rejectRadio = document.querySelector('input[name="approval"][value="reject"]');
+            if (rejectRadio.checked && !justificationTextarea.value.trim()) {
+                justificationTextarea.classList.add('border-error');
+                justificationTextarea.focus();
+                e.preventDefault();
+            }
+        });
+    </script>
+
+</body></html>

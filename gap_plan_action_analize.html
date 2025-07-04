@@ -1,0 +1,282 @@
+<html><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script> window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <style>::-webkit-scrollbar { display: none;}</style>
+    <script>tailwind.config = {
+  "theme": {
+    "extend": {
+      "colors": {
+        "primary": "#2553A1",
+        "accent": "#22B07D",
+        "secondary": "#F7F9FB",
+        "error": "#DF3F40",
+        "border": "#E3E6EA"
+      },
+      "fontFamily": {
+        "sans": [
+          "Inter",
+          "sans-serif"
+        ]
+      }
+    }
+  }
+};</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;500;600;700;800;900&amp;display=swap"><style>
+      body {
+        font-family: 'Inter', sans-serif !important;
+      }
+      
+      /* Preserve Font Awesome icons */
+      .fa, .fas, .far, .fal, .fab {
+        font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands" !important;
+      }
+    </style><style>
+  .highlighted-section {
+    outline: 2px solid #3F20FB;
+    background-color: rgba(63, 32, 251, 0.1);
+  }
+
+  .edit-button {
+    position: absolute;
+    z-index: 1000;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  html, body {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  </style></head>
+<body class="bg-secondary font-sans">
+    <div id="analyze-root" class="flex min-h-[100vh] h-full">
+        <aside id="sidebar" class="w-64 bg-white h-[100vh] fixed border-r border-border">
+            <div class="p-6">
+                <h1 class="text-xl font-semibold text-primary">Serra Verde</h1>
+                <p class="text-sm text-gray-500">GAP Management</p>
+            </div>
+            <nav class="mt-6">
+                <a href="gap_dashboard.html" class="flex items-center px-6 py-3 text-primary bg-blue-50 cursor-pointer">
+                    <i class="fa-solid fa-house w-5"></i>
+                    <span class="ml-3">Dashboard</span>
+                </a>
+                <a href="gap_overview.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-secondary cursor-pointer">
+                    <i class="fa-solid fa-triangle-exclamation w-5"></i>
+                    <span class="ml-3">GAP Overview</span>
+                </a>
+                <a href="#" class="flex items-center px-6 py-3 text-gray-600 hover:bg-secondary cursor-pointer">
+                    <i class="fa-solid fa-list-check w-5"></i>
+                    <span class="ml-3">Action Plans</span>
+                </a>
+                <a href="#" class="flex items-center px-6 py-3 text-gray-600 hover:bg-secondary cursor-pointer">
+                    <i class="fa-solid fa-chart-line w-5"></i>
+                    <span class="ml-3">Follow-ups</span>
+                </a>
+                <a href="#" class="flex items-center px-6 py-3 text-gray-600 hover:bg-secondary cursor-pointer">
+                    <i class="fa-solid fa-check-double w-5"></i>
+                    <span class="ml-3">Validation</span>
+                </a>
+            </nav>
+        </aside>
+        <main id="main-analyze-effectiveness" class="ml-64 flex-1 min-h-[1000px] p-8 bg-secondary flex flex-col gap-8">
+            <header id="header" class="flex justify-between items-center mb-8">
+                <div class="flex items-center gap-4">
+                    <button onclick="history.back()" class="flex items-center gap-2 text-primary font-medium px-3 py-2 rounded hover:bg-blue-50 transition" id="breadcrumb-back-btn">
+                        <i class="fa-solid fa-arrow-left"></i>
+                        <span>Back to Action Plan</span>
+                    </button>
+                    <span class="mx-1 text-gray-300 text-xl">•</span>
+                    <h2 class="text-2xl font-medium text-gray-800">Analyze Action Plan Effectiveness</h2>
+                </div>
+                <div class="flex items-center gap-4">
+                    <button class="px-4 py-2 bg-white border border-border rounded-lg text-gray-600 hover:bg-secondary">
+                        <i class="fa-solid fa-bell mr-2"></i>
+                        <span class="bg-error text-white text-xs rounded-full px-1.5 py-0.5">2</span>
+                    </button>
+                    <div class="flex items-center gap-3 bg-white border border-border rounded-lg px-4 py-2">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-1.jpg" class="w-8 h-8 rounded-full">
+                        <div>
+                            <p class="text-sm font-medium">Ana Oliveira</p>
+                            <p class="text-xs text-gray-500">Auditor</p>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <section id="gap-header-section" class="bg-white rounded-lg border border-border p-8 flex flex-col gap-5 mb-8">
+                <div class="flex flex-wrap gap-6 items-center">
+                    <span class="bg-secondary rounded-md px-3 py-1 text-primary font-semibold text-base tracking-wide border border-border">GAP-0021</span>
+                    <span class="px-3 py-1 rounded text-white bg-error/90 text-sm font-semibold">High</span>
+                    <span class="px-3 py-1 rounded bg-accent/10 text-accent text-sm font-semibold">Completed</span>
+                    <span class="flex items-center gap-2 ml-4">
+                        <i class="fa-solid fa-users text-primary"></i>
+                        <span class="font-medium text-gray-700">Area:</span>
+                        <span class="font-semibold text-gray-700">Safety</span>
+                    </span>
+                    <span class="flex items-center gap-2 ml-4">
+                        <i class="fa-regular fa-user text-primary"></i>
+                        <span class="font-medium text-gray-700">Responsible:</span>
+                        <span class="font-semibold text-gray-700">Maria Costa</span>
+                    </span>
+                </div>
+                <div>
+                    <h3 class="text-lg font-medium text-gray-800 mb-1">Routine inspection revealed improper storage of chemicals in warehouse area.</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-y-2 gap-x-10 text-base">
+                        <div>
+                            <span class="text-gray-500 font-medium">Root Cause: </span>
+                            <span class="text-gray-700">Insufficient staff training and lack of clear storage guidelines.</span>
+                        </div>
+                        <div>
+                            <span class="text-gray-500 font-medium">Initial Action Proposal: </span>
+                            <span class="text-gray-700">Update staff training and implement new storage SOP.</span>
+                        </div>
+                        <div>
+                            <span class="text-gray-500 font-medium">Recurrence: </span>
+                            <span class="text-gray-700">Recurring</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="action-plan-summary-section" class="bg-white rounded-lg border border-border p-8 flex flex-col gap-4 mb-8">
+                <h4 class="text-lg font-semibold text-primary flex items-center gap-2">
+                    <i class="fa-solid fa-list-check"></i> Action Plan Summary
+                </h4>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-3">
+                    <div>
+                        <span class="text-gray-700 font-medium text-sm">Plan Title</span>
+                        <div class="text-base text-gray-900 font-medium">Implement Chemical Storage SOP</div>
+                    </div>
+                    <div>
+                        <span class="text-gray-700 font-medium text-sm">Responsible for Execution</span>
+                        <div class="text-base text-gray-900 font-medium">Maria Costa</div>
+                    </div>
+                    <div>
+                        <span class="text-gray-700 font-medium text-sm">Final Deadline</span>
+                        <div class="text-base text-gray-800">2024-07-15</div>
+                    </div>
+                    <div class="md:col-span-2 flex flex-col gap-1 mt-1">
+                        <span class="text-gray-700 font-medium text-sm">Attachments</span>
+                        <ul class="flex flex-col gap-2 mt-1 max-w-xs">
+                            <li class="flex items-center gap-2 bg-secondary rounded border border-border px-3 py-1">
+                                <i class="fa-solid fa-paperclip text-primary"></i>
+                                <span class="truncate flex-1 text-gray-700">storage_sop_final.pdf</span>
+                                <button class="text-primary hover:underline text-sm"><i class="fa-solid fa-download"></i></button>
+                            </li>
+                            <li class="flex items-center gap-2 bg-secondary rounded border border-border px-3 py-1">
+                                <i class="fa-solid fa-paperclip text-primary"></i>
+                                <span class="truncate flex-1 text-gray-700">training_certificate_list.xlsx</span>
+                                <button class="text-primary hover:underline text-sm"><i class="fa-solid fa-download"></i></button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="effectiveness-analysis-section" class="bg-white rounded-lg border border-border p-8 flex flex-col gap-6 mb-8">
+                <h4 class="text-lg font-semibold text-primary flex items-center gap-2">
+                    <i class="fa-solid fa-clipboard-check"></i> Effectiveness Analysis
+                </h4>
+                <form id="effectiveness-analysis-form" class="flex flex-col gap-6">
+                    <div>
+                        <label class="text-gray-700 font-medium text-sm mb-1 block" for="auditor-evaluation">Auditor's Evaluation <span class="text-error">*</span></label>
+                        <textarea id="auditor-evaluation" rows="4" required="" placeholder="Describe your evaluation of the plan's effectiveness..." class="w-full rounded-md border border-border bg-white px-3 py-2 text-gray-700 text-base focus:outline-none focus:border-primary placeholder-gray-400 transition resize-none"></textarea>
+                    </div>
+                    <div>
+                        <label class="text-gray-700 font-medium text-sm mb-1 block" for="plan-effective">Was the plan effective? <span class="text-error">*</span></label>
+                        <select id="plan-effective" required="" class="w-full rounded border border-border px-3 py-1.5 text-base text-gray-700 bg-white focus:outline-none focus:border-primary">
+                            <option value="" disabled="" selected="">Select</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="text-gray-700 font-medium text-sm mb-1 block" for="supporting-docs">Upload Supporting Documents</label>
+                        <div class="flex flex-col items-center justify-center border-2 border-dashed border-border rounded-md bg-secondary p-4 gap-2 transition hover:border-primary cursor-pointer" id="upload-box">
+                            <i class="fa-solid fa-cloud-arrow-up text-primary text-2xl"></i>
+                            <span class="text-xs text-gray-500">Drag &amp; drop or click to select files (PDF, DOCX, JPG, PNG)</span>
+                            <input type="file" id="supporting-docs" class="hidden" multiple="" accept=".pdf,.docx,.jpg,.jpeg,.png">
+                        </div>
+                        <div class="flex flex-col gap-1 mt-2" id="supporting-attachment-list"></div>
+                    </div>
+                    <div>
+                        <label class="text-gray-700 font-medium text-sm mb-1 block" for="final-comments">Final Comments (Optional)</label>
+                        <textarea id="final-comments" rows="2" placeholder="Any final comments..." class="w-full rounded-md border border-border bg-white px-3 py-2 text-gray-700 text-base focus:outline-none focus:border-primary placeholder-gray-400 transition resize-none"></textarea>
+                    </div>
+                    <div class="flex gap-4 justify-end mt-2">
+                        <button type="button" id="cancel-analysis-btn" class="px-6 py-3 font-medium rounded-md border border-border bg-white text-gray-700 hover:bg-secondary transition">Cancel</button>
+                        <button type="submit" id="submit-analysis-btn" class="px-8 py-3 font-medium rounded-md bg-accent text-white hover:bg-accent/90 shadow-sm flex items-center gap-2 transition">
+                            <i class="fa-solid fa-paper-plane"></i> Submit Analysis
+                        </button>
+                    </div>
+                </form>
+            </section>
+        </main>
+    </div>
+    <script>
+        // Upload supporting docs interaction
+        const uploadBox = document.getElementById('upload-box');
+        const fileInput = document.getElementById('supporting-docs');
+        const attachmentList = document.getElementById('supporting-attachment-list');
+
+        uploadBox.addEventListener('click', () => fileInput.click());
+        uploadBox.addEventListener('drop', (e) => {
+            e.preventDefault();
+            fileInput.files = e.dataTransfer.files;
+            renderSupportingAttachmentList();
+        });
+        uploadBox.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadBox.classList.add('border-primary');
+        });
+        uploadBox.addEventListener('dragleave', (e) => {
+            uploadBox.classList.remove('border-primary');
+        });
+        fileInput.addEventListener('change', () => renderSupportingAttachmentList());
+
+        function renderSupportingAttachmentList() {
+            attachmentList.innerHTML = '';
+            const files = fileInput.files;
+            if (files && files.length) {
+                Array.from(files).forEach((file, idx) => {
+                    const li = document.createElement('div');
+                    li.className = 'flex items-center gap-2 bg-secondary rounded border border-border px-2 py-1 text-xs';
+                    li.innerHTML = `<i class="fa-solid fa-paperclip text-primary"></i>
+                        <span class="truncate flex-1 text-gray-700">${file.name}</span>
+                        <button type="button" class="text-error hover:underline" onclick="removeSupportingFile(${idx})"><i class="fa-solid fa-xmark"></i></button>`;
+                    attachmentList.appendChild(li);
+                });
+            }
+        }
+        function removeSupportingFile(idx) {
+            const dt = new DataTransfer();
+            const files = fileInput.files;
+            Array.from(files).forEach((file, i) => { if (i !== idx) dt.items.add(file); });
+            fileInput.files = dt.files;
+            renderSupportingAttachmentList();
+        }
+
+        // Form submission
+        document.getElementById('effectiveness-analysis-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const evaluation = document.getElementById('auditor-evaluation').value.trim();
+            const effective = document.getElementById('plan-effective').value;
+            if (!evaluation || !effective) {
+                alert('Please complete the required fields.');
+                return;
+            }
+            alert('Effectiveness analysis submitted successfully!');
+        });
+
+        document.getElementById('cancel-analysis-btn').addEventListener('click', function() {
+            history.back();
+        });
+    </script>
+
+</body></html>

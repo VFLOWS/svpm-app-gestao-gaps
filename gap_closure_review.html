@@ -1,0 +1,494 @@
+<html><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script> window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <style>::-webkit-scrollbar { display: none;}</style>
+    <script>tailwind.config = {
+  "theme": {
+    "extend": {
+      "colors": {
+        "primary": "#2553A1",
+        "accent": "#22B07D",
+        "secondary": "#F7F9FB",
+        "error": "#DF3F40",
+        "border": "#E3E6EA",
+        "warning": "#F4B740",
+        "rejected": "#DF3F40",
+        "effective": "#22B07D",
+        "noteffective": "#DF3F40",
+        "statusbg": "#F0F4F9",
+        "orange": "#F79536"
+      },
+      "fontFamily": {
+        "sans": [
+          "Inter",
+          "sans-serif"
+        ]
+      }
+    }
+  }
+};</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;500;600;700;800;900&amp;display=swap"><style>
+      body {
+        font-family: 'Inter', sans-serif !important;
+      }
+      
+      /* Preserve Font Awesome icons */
+      .fa, .fas, .far, .fal, .fab {
+        font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands" !important;
+      }
+    </style><style>
+  .highlighted-section {
+    outline: 2px solid #3F20FB;
+    background-color: rgba(63, 32, 251, 0.1);
+  }
+
+  .edit-button {
+    position: absolute;
+    z-index: 1000;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  html, body {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  </style></head>
+<body class="bg-secondary font-sans">
+<div id="gap-closure-root" class="flex min-h-[100vh] h-full">
+    <aside id="sidebar" class="w-64 bg-white h-[100vh] fixed border-r border-border">
+        <div class="p-6">
+            <h1 class="text-xl font-semibold text-primary">Serra Verde</h1>
+            <p class="text-sm text-gray-500">GAP Management</p>
+        </div>
+        <nav class="mt-6">
+            <a href="gap_dashboard.html" class="flex items-center px-6 py-3 text-primary bg-blue-50 cursor-pointer">
+                <i class="fa-solid fa-house w-5"></i>
+                <span class="ml-3">Dashboard</span>
+            </a>
+            <a href="gap_overview.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-secondary cursor-pointer">
+                <i class="fa-solid fa-triangle-exclamation w-5"></i>
+                <span class="ml-3">GAP Overview</span>
+            </a>
+            <a href="gap_closure_review.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-secondary cursor-pointer">
+                <i class="fa-solid fa-triangle-exclamation w-5"></i>
+                <span class="ml-3">GAP Closure Review</span>
+            </a>
+            <a href="gap_register_action_plan.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-secondary cursor-pointer">
+                <i class="fa-solid fa-list-check w-5"></i>
+                <span class="ml-3">Register Action Plan</span>
+            </a>    
+            <a href="gap_appove_action_plan.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-secondary cursor-pointer">
+                <i class="fa-solid fa-list-check w-5"></i>
+                <span class="ml-3">Approve Action Plan</span>
+            </a>
+            <a href="gap_action_plan_follow_up.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-secondary cursor-pointer">
+                <i class="fa-solid fa-list-check w-5"></i>
+                <span class="ml-3">Action Plan Follow-up</span>
+            </a>
+            <a href="gap_execute_action_plan.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-secondary cursor-pointer">
+                <i class="fa-solid fa-list-check w-5"></i>
+                <span class="ml-3">Execute Action Plan</span>
+            </a>
+            <a href="gap_plan_action_analize.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-secondary cursor-pointer">
+                <i class="fa-solid fa-list-check w-5"></i>
+                <span class="ml-3">Analyze Action Plan Effectiveness</span>
+            </a>             
+        </nav>
+    </aside>
+    <main id="main-gap-closure-review" class="ml-64 flex-1 min-h-[1100px] p-8 bg-secondary flex flex-col gap-8">
+        <header id="header" class="flex justify-between items-center mb-8">
+            <div class="flex items-center gap-4">
+                <button onclick="history.back()" class="flex items-center gap-2 text-primary font-medium px-3 py-2 rounded hover:bg-blue-50 transition" id="breadcrumb-back-btn">
+                    <i class="fa-solid fa-arrow-left"></i>
+                    <span>Back to Validation</span>
+                </button>
+                <span class="mx-1 text-gray-300 text-xl">•</span>
+                <h2 class="text-2xl font-medium text-gray-800">GAP Closure Review</h2>
+            </div>
+            <div class="flex items-center gap-4">
+                <button class="px-4 py-2 bg-white border border-border rounded-lg text-gray-600 hover:bg-secondary">
+                    <i class="fa-solid fa-bell mr-2"></i>
+                    <span class="bg-error text-white text-xs rounded-full px-1.5 py-0.5">2</span>
+                </button>
+                <div class="flex items-center gap-3 bg-white border border-border rounded-lg px-4 py-2">
+                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-1.jpg" class="w-8 h-8 rounded-full">
+                    <div>
+                        <p class="text-sm font-medium">Ana Oliveira</p>
+                        <p class="text-xs text-gray-500">Auditor</p>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <section id="gap-header-section" class="bg-white rounded-lg border border-border p-8 flex flex-col gap-5 mb-8">
+            <div class="flex flex-wrap gap-6 items-center">
+                <span class="bg-secondary rounded-md px-3 py-1 text-primary font-semibold text-base tracking-wide border border-border">GAP-0021</span>
+                <span class="px-3 py-1 rounded text-white bg-error/90 text-sm font-semibold">High</span>
+                <span class="px-3 py-1 rounded bg-accent/10 text-accent text-sm font-semibold">Validation</span>
+                <span class="flex items-center gap-2 ml-4">
+                    <i class="fa-solid fa-users text-primary"></i>
+                    <span class="font-medium text-gray-700">Areas:</span>
+                    <span class="font-semibold text-gray-700">Safety, Logistics</span>
+                </span>
+                <span class="flex items-center gap-2 ml-4">
+                    <i class="fa-regular fa-user text-primary"></i>
+                    <span class="font-medium text-gray-700">Responsibles:</span>
+                    <span class="font-semibold text-gray-700">Maria Costa, Carlos Silva</span>
+                </span>
+            </div>
+            <div>
+                <h3 class="text-lg font-medium text-gray-800 mb-1">Routine inspection revealed improper storage of chemicals in warehouse area.</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-y-2 gap-x-10 text-base">
+                    <div>
+                        <span class="text-gray-500 font-medium">Root Cause: </span>
+                        <span class="text-gray-700">Insufficient staff training and lack of clear storage guidelines.</span>
+                    </div>
+                    <div>
+                        <span class="text-gray-500 font-medium">Initial Action Proposal: </span>
+                        <span class="text-gray-700">Update staff training and implement new storage SOP.</span>
+                    </div>
+                    <div>
+                        <span class="text-gray-500 font-medium">Recurrence: </span>
+                        <span class="text-gray-700">Recurring</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="gap-closure-summary-section" class="bg-white rounded-lg border border-border p-8 flex flex-col gap-4 mb-8">
+            <h4 class="text-lg font-semibold text-primary flex items-center gap-2">
+                <i class="fa-solid fa-file-signature"></i> GAP Closure Summary
+            </h4>
+            <div class="flex flex-col gap-6">
+                <div id="plan-summary-list" class="flex flex-col gap-5">
+                    <!-- Plan Card 1 -->
+                    <div id="plan-card-1" class="border border-border rounded-lg bg-statusbg p-5 flex flex-col md:flex-row md:items-center gap-4">
+                        <div class="flex-1 min-w-0">
+                            <div class="flex flex-col md:flex-row md:items-center gap-2">
+                                <span class="text-base font-medium text-gray-900 truncate">Implement Chemical Storage SOP</span>
+                                <span class="ml-0 md:ml-4 px-2.5 py-0.5 rounded bg-accent/20 text-accent text-xs font-semibold flex items-center gap-1">
+                                    <i class="fa-solid fa-user-check"></i> Maria Costa
+                                </span>
+                                <span class="ml-0 md:ml-4 px-2.5 py-0.5 rounded bg-accent/90 text-white text-xs font-semibold flex items-center gap-1">
+                                    <i class="fa-solid fa-check-circle"></i> Completed
+                                </span>
+                                <span class="ml-0 md:ml-4 px-2.5 py-0.5 rounded bg-effective/10 text-effective text-xs font-semibold flex items-center gap-1">
+                                    <i class="fa-solid fa-thumbs-up"></i> Effective
+                                </span>
+                            </div>
+                            <div class="flex flex-wrap gap-2 mt-2">
+                                <button class="flex items-center gap-1 text-primary hover:underline text-sm font-medium" onclick="showPlanDetails('1')">
+                                    <i class="fa-regular fa-eye"></i> View Details/Comments
+                                </button>
+                                <div class="flex items-center gap-2">
+                                    <span class="text-xs text-gray-500">Attachments:</span>
+                                    <span class="flex items-center gap-2">
+                                        <button class="flex items-center gap-1 text-primary hover:underline text-xs" onclick="window.open('#')">
+                                            <i class="fa-solid fa-paperclip"></i> storage_sop_final.pdf
+                                        </button>
+                                        <button class="flex items-center gap-1 text-primary hover:underline text-xs" onclick="window.open('#')">
+                                            <i class="fa-solid fa-paperclip"></i> training_certificate_list.xlsx
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex flex-col items-end gap-2">
+                            <label class="flex items-center gap-2">
+                                <input type="checkbox" class="plan-return-checkbox accent-orange-500 w-4 h-4" data-plan="1" style="display:none;">
+                                <span class="text-xs text-gray-400">Eligible for Return</span>
+                            </label>
+                        </div>
+                    </div>
+                    <!-- Plan Card 2 -->
+                    <div id="plan-card-2" class="border border-border rounded-lg bg-statusbg p-5 flex flex-col md:flex-row md:items-center gap-4">
+                        <div class="flex-1 min-w-0">
+                            <div class="flex flex-col md:flex-row md:items-center gap-2">
+                                <span class="text-base font-medium text-gray-900 truncate">Logistics Handling Update</span>
+                                <span class="ml-0 md:ml-4 px-2.5 py-0.5 rounded bg-accent/20 text-accent text-xs font-semibold flex items-center gap-1">
+                                    <i class="fa-solid fa-user-check"></i> Carlos Silva
+                                </span>
+                                <span class="ml-0 md:ml-4 px-2.5 py-0.5 rounded bg-accent/90 text-white text-xs font-semibold flex items-center gap-1">
+                                    <i class="fa-solid fa-check-circle"></i> Completed
+                                </span>
+                                <span class="ml-0 md:ml-4 px-2.5 py-0.5 rounded bg-noteffective/10 text-noteffective text-xs font-semibold flex items-center gap-1">
+                                    <i class="fa-solid fa-thumbs-down"></i> Not effective
+                                </span>
+                            </div>
+                            <div class="flex flex-wrap gap-2 mt-2">
+                                <button class="flex items-center gap-1 text-primary hover:underline text-sm font-medium" onclick="showPlanDetails('2')">
+                                    <i class="fa-regular fa-eye"></i> View Details/Comments
+                                </button>
+                                <div class="flex items-center gap-2">
+                                    <span class="text-xs text-gray-500">Attachments:</span>
+                                    <span class="flex items-center gap-2">
+                                        <button class="flex items-center gap-1 text-primary hover:underline text-xs" onclick="window.open('#')">
+                                            <i class="fa-solid fa-paperclip"></i> logistics_policy_update.docx
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex flex-col items-end gap-2">
+                            <label class="flex items-center gap-2">
+                                <input type="checkbox" class="plan-return-checkbox accent-orange-500 w-4 h-4" data-plan="2">
+                                <span class="text-xs text-orange-600 font-semibold">Mark for Return</span>
+                            </label>
+                        </div>
+                    </div>
+                    <!-- Plan Card 3 (Rejected) -->
+                    <div id="plan-card-3" class="border border-border rounded-lg bg-statusbg p-5 flex flex-col md:flex-row md:items-center gap-4">
+                        <div class="flex-1 min-w-0">
+                            <div class="flex flex-col md:flex-row md:items-center gap-2">
+                                <span class="text-base font-medium text-gray-900 truncate">Safety Training Refresh</span>
+                                <span class="ml-0 md:ml-4 px-2.5 py-0.5 rounded bg-accent/20 text-accent text-xs font-semibold flex items-center gap-1">
+                                    <i class="fa-solid fa-user-check"></i> Maria Costa
+                                </span>
+                                <span class="ml-0 md:ml-4 px-2.5 py-0.5 rounded bg-rejected/90 text-white text-xs font-semibold flex items-center gap-1">
+                                    <i class="fa-solid fa-xmark-circle"></i> Rejected
+                                </span>
+                                <span class="ml-0 md:ml-4 px-2.5 py-0.5 rounded bg-noteffective/10 text-noteffective text-xs font-semibold flex items-center gap-1">
+                                    <i class="fa-solid fa-thumbs-down"></i> Not effective
+                                </span>
+                            </div>
+                            <div class="flex flex-wrap gap-2 mt-2">
+                                <button class="flex items-center gap-1 text-primary hover:underline text-sm font-medium" onclick="showPlanDetails('3')">
+                                    <i class="fa-regular fa-eye"></i> View Details/Comments
+                                </button>
+                                <div class="flex items-center gap-2">
+                                    <span class="text-xs text-gray-500">Attachments:</span>
+                                    <span class="flex items-center gap-2">
+                                        <button class="flex items-center gap-1 text-primary hover:underline text-xs" onclick="window.open('#')">
+                                            <i class="fa-solid fa-paperclip"></i> training_refresh_results.pdf
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex flex-col items-end gap-2">
+                            <label class="flex items-center gap-2">
+                                <input type="checkbox" class="plan-return-checkbox accent-orange-500 w-4 h-4" data-plan="3">
+                                <span class="text-xs text-orange-600 font-semibold">Mark for Return</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="auditor-actions-section" class="bg-white rounded-lg border border-border p-8 flex flex-col gap-8 mb-8">
+            <h4 class="text-lg font-semibold text-primary flex items-center gap-2">
+                <i class="fa-solid fa-clipboard-list"></i> Auditor Actions
+            </h4>
+            <div class="flex flex-col gap-4">
+                <label class="text-gray-700 font-medium text-sm mb-1 block" for="final-remarks">Final Remarks (Optional)</label>
+                <textarea id="final-remarks" rows="2" placeholder="Any final remarks regarding the GAP closure..." class="w-full rounded-md border border-border bg-white px-3 py-2 text-gray-700 text-base focus:outline-none focus:border-primary placeholder-gray-400 transition resize-none"></textarea>
+            </div>
+            <div class="flex gap-4 justify-end mt-2" id="auditor-action-buttons">
+                <button id="return-plan-btn" class="px-6 py-3 font-medium rounded-md bg-orange text-white hover:bg-orange/80 shadow-sm flex items-center gap-2 transition">
+                    <i class="fa-solid fa-rotate-left"></i> Return Plan(s)
+                </button>
+                <button id="close-gap-btn" class="px-8 py-3 font-medium rounded-md bg-accent text-white hover:bg-accent/90 shadow-sm flex items-center gap-2 transition">
+                    <i class="fa-solid fa-lock"></i> Close GAP
+                </button>
+            </div>
+        </section>
+    </main>
+</div>
+
+<div id="plan-details-modal" class="fixed inset-0 z-50 bg-black/50 flex items-center justify-center hidden">
+    <div class="bg-white rounded-lg shadow-2xl p-8 w-full max-w-lg border border-border flex flex-col gap-6 relative">
+        <button class="absolute top-3 right-3 text-gray-500 hover:text-primary text-xl" onclick="closePlanDetails()">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <h5 class="text-lg font-semibold text-primary flex items-center gap-2">
+            <i class="fa-solid fa-file-lines"></i> Action Plan Details
+        </h5>
+        <div id="plan-details-content" class="flex flex-col gap-2"></div>
+        <div class="flex justify-end">
+            <button class="px-5 py-2 font-medium rounded-md bg-primary text-white hover:bg-primary/90 transition" onclick="closePlanDetails()">Close</button>
+        </div>
+    </div>
+</div>
+
+<div id="close-gap-modal" class="fixed inset-0 z-50 bg-black/40 flex items-center justify-center hidden">
+    <div class="bg-white rounded-lg shadow-2xl w-full max-w-md p-8 flex flex-col gap-6 border border-border">
+        <h4 class="text-lg font-semibold text-primary flex items-center gap-2">
+            <i class="fa-solid fa-lock"></i> Confirm Closure
+        </h4>
+        <p class="text-gray-700 text-base">Are you sure you want to close this GAP? This action cannot be undone and will finalize all related action plans as effective and completed.</p>
+        <div class="flex gap-4 justify-end mt-2">
+            <button onclick="toggleCloseGapModal(false)" class="px-5 py-2 font-medium rounded-md border border-border bg-white text-gray-700 hover:bg-secondary transition">Cancel</button>
+            <button onclick="submitCloseGap()" class="px-7 py-2 font-medium rounded-md bg-accent text-white hover:bg-accent/90 transition flex items-center gap-2">
+                <i class="fa-solid fa-lock"></i> Confirm &amp; Close
+            </button>
+        </div>
+    </div>
+</div>
+
+<div id="return-plan-modal" class="fixed inset-0 z-50 bg-black/40 flex items-center justify-center hidden">
+    <div class="bg-white rounded-lg shadow-2xl w-full max-w-md p-8 flex flex-col gap-6 border border-border">
+        <h4 class="text-lg font-semibold text-orange-600 flex items-center gap-2">
+            <i class="fa-solid fa-rotate-left"></i> Return Selected Plan(s)
+        </h4>
+        <p class="text-gray-700 text-base mb-2">
+            Are you sure you want to return the selected plan(s) for adjustment? This will notify the responsible person(s) to update the plan(s).
+        </p>
+        <div>
+            <label class="text-gray-700 font-medium text-sm mb-1 block" for="return-reason">Reason for Return <span class="text-error">*</span></label>
+            <textarea id="return-reason" rows="2" required="" placeholder="Describe the reason for returning the plan(s)..." class="w-full rounded-md border border-border bg-white px-3 py-2 text-gray-700 text-base focus:outline-none focus:border-primary placeholder-gray-400 transition resize-none"></textarea>
+        </div>
+        <div class="flex gap-4 justify-end mt-2">
+            <button onclick="toggleReturnPlanModal(false)" class="px-5 py-2 font-medium rounded-md border border-border bg-white text-gray-700 hover:bg-secondary transition">Cancel</button>
+            <button onclick="submitReturnPlans()" class="px-7 py-2 font-medium rounded-md bg-orange text-white hover:bg-orange/90 transition flex items-center gap-2">
+                <i class="fa-solid fa-paper-plane"></i> Submit Return
+            </button>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Simulated plan details - in real code, replace with fetched content
+    const PLAN_DETAILS = {
+        '1': {
+            title: "Implement Chemical Storage SOP",
+            responsible: "Maria Costa",
+            status: "Completed",
+            evaluation: "Effective",
+            comments: "SOP implemented, staff trained. No further issues detected.",
+            attachments: [
+                { name: "storage_sop_final.pdf", url: "#" },
+                { name: "training_certificate_list.xlsx", url: "#" }
+            ]
+        },
+        '2': {
+            title: "Logistics Handling Update",
+            responsible: "Carlos Silva",
+            status: "Completed",
+            evaluation: "Not effective",
+            comments: "Process updated but new risks found. Needs improvement.",
+            attachments: [
+                { name: "logistics_policy_update.docx", url: "#" }
+            ]
+        },
+        '3': {
+            title: "Safety Training Refresh",
+            responsible: "Maria Costa",
+            status: "Rejected",
+            evaluation: "Not effective",
+            comments: "Training refresh did not address all required points. Rejected.",
+            attachments: [
+                { name: "training_refresh_results.pdf", url: "#" }
+            ]
+        }
+    };
+
+    function showPlanDetails(planId) {
+        const modal = document.getElementById('plan-details-modal');
+        const content = document.getElementById('plan-details-content');
+        const plan = PLAN_DETAILS[planId];
+        content.innerHTML = `
+            <div><span class="text-gray-500 font-medium">Title: </span><span class="text-gray-900">${plan.title}</span></div>
+            <div><span class="text-gray-500 font-medium">Responsible: </span><span class="text-gray-800">${plan.responsible}</span></div>
+            <div><span class="text-gray-500 font-medium">Status: </span><span class="text-gray-800">${plan.status}</span></div>
+            <div><span class="text-gray-500 font-medium">Final Evaluation: </span><span class="text-gray-800">${plan.evaluation}</span></div>
+            <div><span class="text-gray-500 font-medium">Auditor Comments: </span><span class="text-gray-800">${plan.comments}</span></div>
+            <div>
+                <span class="text-gray-500 font-medium">Attachments: </span>
+                <span class="flex flex-wrap gap-2">
+                    ${plan.attachments.map(att => `
+                        <button class="flex items-center gap-1 text-primary hover:underline text-xs" onclick="window.open('${att.url}')">
+                            <i class="fa-solid fa-paperclip"></i> ${att.name}
+                        </button>
+                    `).join('')}
+                </span>
+            </div>
+        `;
+        modal.classList.remove('hidden');
+    }
+    function closePlanDetails() {
+        document.getElementById('plan-details-modal').classList.add('hidden');
+    }
+
+    // Auditor Action Button logic: Toggle visibility based on plan statuses
+    function updateAuditorActionButtons() {
+        // Simulate plan status check
+        // Plan 1: Completed/Effective (cannot be marked for return), Plan 2: Completed/Not Effective, Plan 3: Rejected/Not Effective
+        // Only allow Plan 2, 3 to be marked for return
+        document.querySelectorAll('#plan-card-1 .plan-return-checkbox')[0].style.display = 'none';
+        document.querySelectorAll('#plan-card-2 .plan-return-checkbox')[0].style.display = 'inline-block';
+        document.querySelectorAll('#plan-card-3 .plan-return-checkbox')[0].style.display = 'inline-block';
+    }
+    updateAuditorActionButtons();
+
+    // Show/hide confirmation modals
+    function toggleCloseGapModal(show) {
+        document.getElementById('close-gap-modal').classList.toggle('hidden', !show);
+    }
+    function toggleReturnPlanModal(show) {
+        document.getElementById('return-plan-modal').classList.toggle('hidden', !show);
+    }
+
+    // Button click handlers
+    document.getElementById('close-gap-btn').onclick = function() {
+        // Only enable if all plans are completed and effective
+        if (document.querySelectorAll('.plan-return-checkbox:checked').length > 0) {
+            alert('Please unselect plans marked for return before closing the GAP.');
+            return;
+        }
+        toggleCloseGapModal(true);
+    };
+    document.getElementById('return-plan-btn').onclick = function() {
+        // Only enable if at least one plan is checked
+        if (document.querySelectorAll('.plan-return-checkbox:checked').length === 0) {
+            alert('Select at least one plan to return.');
+            return;
+        }
+        toggleReturnPlanModal(true);
+    };
+
+    function submitCloseGap() {
+        toggleCloseGapModal(false);
+        alert('GAP closed successfully!');
+        // Redirect or update as needed
+    }
+    function submitReturnPlans() {
+        const reason = document.getElementById('return-reason').value.trim();
+        if (!reason) {
+            alert('Please enter the reason for returning the plan(s).');
+            return;
+        }
+        toggleReturnPlanModal(false);
+        alert('Selected plan(s) returned for adjustment.');
+        // Redirect or update as needed
+    }
+
+    // Clicking outside modals closes them
+    document.getElementById('close-gap-modal').addEventListener('click', function(e){
+        if (e.target === this) toggleCloseGapModal(false);
+    });
+    document.getElementById('return-plan-modal').addEventListener('click', function(e){
+        if (e.target === this) toggleReturnPlanModal(false);
+    });
+    document.getElementById('plan-details-modal').addEventListener('click', function(e){
+        if (e.target === this) closePlanDetails();
+    });
+
+    // Keyboard ESC closes modals
+    document.addEventListener('keydown', function(e) {
+        if (e.key === "Escape") {
+            toggleCloseGapModal(false);
+            toggleReturnPlanModal(false);
+            closePlanDetails();
+        }
+    });
+</script>
+
+</body></html>
