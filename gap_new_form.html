@@ -36,78 +36,113 @@
     </style>
 </head>
 <body class="bg-gray-50">
-    <div class="max-w-6xl mx-auto p-6">
-        <!-- GAP Header -->
-        <div class="mb-8">
-            <h1 class="text-2xl font-bold text-primary mb-2">GAP #GAP-2023-001</h1>
-            <p class="text-gray-600">Created on: 07/01/2023 | Status: <span class="font-semibold text-accent">Open</span></p>
+    <!-- Main Content -->
+    <div class="p-8 max-w-7xl mx-auto">
+        <!-- Header -->
+        <div class="flex justify-between items-center mb-8">
+            <div>
+                <h1 class="text-2xl font-bold text-primary">GAP Details</h1>
+                <p class="text-gray-600">View detailed information about this GAP</p>
+            </div>
+            <div class="flex items-center gap-4">
+                <div class="flex items-center gap-3 bg-white border border-border rounded-lg px-4 py-2">
+                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" class="w-8 h-8 rounded-full">
+                    <div>
+                        <p class="text-sm font-medium">John Cooper</p>
+                        <p class="text-xs text-gray-500">Auditor</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- GAP Information -->
+        <div class="bg-white rounded-lg shadow-sm border border-border p-6 mb-6">
+            <h2 class="text-lg font-semibold text-primary mb-4 border-b pb-2">Basic Information</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <p class="text-sm text-gray-500">GAP ID</p>
+                    <p class="font-medium">GAP-2023-001</p>
+                </div>
+                <div>
+                    <p class="text-sm text-gray-500">Status</p>
+                    <p class="font-medium text-accent">Open</p>
+                </div>
+                <div>
+                    <p class="text-sm text-gray-500">Created On</p>
+                    <p class="font-medium">07/01/2023</p>
+                </div>
+                <div>
+                    <p class="text-sm text-gray-500">Created By</p>
+                    <p class="font-medium">John Cooper (Quality Department)</p>
+                </div>
+                <div>
+                    <p class="text-sm text-gray-500">Risk Level</p>
+                    <p class="font-medium">High</p>
+                </div>
+                <div>
+                    <p class="text-sm text-gray-500">Recurrence</p>
+                    <p class="font-medium">Recurring</p>
+                </div>
+            </div>
         </div>
 
         <!-- GAP Details -->
         <div class="bg-white rounded-lg shadow-sm border border-border p-6 mb-6">
-            <h2 class="text-lg font-semibold text-primary mb-4">GAP Information</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <h2 class="text-lg font-semibold text-primary mb-4 border-b pb-2">GAP Details</h2>
+            <div class="space-y-6">
                 <div>
-                    <p class="text-sm text-gray-500">Title</p>
-                    <p class="font-medium">Non-conformity in safety procedures</p>
+                    <p class="text-sm text-gray-500 mb-1">Description</p>
+                    <p class="text-gray-800">Identified non-conformity in the safety procedures during the last audit. The emergency exits were blocked and fire extinguishers were not properly maintained.</p>
                 </div>
                 <div>
-                    <p class="text-sm text-gray-500">Priority</p>
-                    <p class="font-medium">High</p>
+                    <p class="text-sm text-gray-500 mb-1">Root Cause</p>
+                    <p class="text-gray-800">Lack of regular safety inspections and inadequate staff training on emergency procedures.</p>
                 </div>
                 <div>
-                    <p class="text-sm text-gray-500">Created By</p>
-                    <p class="font-medium">John Doe (Quality Department)</p>
-                </div>
-                <div>
-                    <p class="text-sm text-gray-500">Due Date</p>
-                    <p class="font-medium">08/15/2023</p>
-                </div>
-                <div class="md:col-span-2">
-                    <p class="text-sm text-gray-500">Description</p>
-                    <p class="mt-1">Identified non-conformity in the safety procedures during the last audit. The emergency exits were blocked and fire extinguishers were not properly maintained.</p>
+                    <p class="text-sm text-gray-500 mb-1">Initial Action Plan</p>
+                    <p class="text-gray-800">Schedule immediate safety training for all staff and implement a weekly inspection checklist for emergency equipment and exits.</p>
                 </div>
             </div>
         </div>
 
-        <!-- Registered Areas -->
+        <!-- Responsible Areas -->
         <div class="bg-white rounded-lg shadow-sm border border-border p-6 mb-6">
-            <h2 class="text-lg font-semibold text-primary mb-4">Affected Areas</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div class="flex items-center p-3 border border-border rounded-lg">
-                    <i class="fa-solid fa-building text-primary mr-3 text-xl"></i>
+            <h2 class="text-lg font-semibold text-primary mb-4 border-b pb-2">Responsible Areas</h2>
+            <div class="space-y-4">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 p-4 bg-secondary rounded-lg">
                     <div>
-                        <p class="font-medium">Production Area</p>
-                        <p class="text-sm text-gray-500">Main production line</p>
+                        <p class="text-sm text-gray-500">Area</p>
+                        <p class="font-medium">Safety Department</p>
+                    </div>
+                    <div>
+                        <p class="text-sm text-gray-500">Responsible</p>
+                        <p class="font-medium">Sarah Johnson</p>
+                    </div>
+                    <div>
+                        <p class="text-sm text-gray-500">Due Date</p>
+                        <p class="font-medium">07/30/2023</p>
                     </div>
                 </div>
-                <div class="flex items-center p-3 border border-border rounded-lg">
-                    <i class="fa-solid fa-warehouse text-primary mr-3 text-xl"></i>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 p-4 bg-white rounded-lg border border-border">
                     <div>
-                        <p class="font-medium">Warehouse</p>
-                        <p class="text-sm text-gray-500">Storage area A</p>
+                        <p class="text-sm text-gray-500">Area</p>
+                        <p class="font-medium">HR Department</p>
                     </div>
-                </div>
-                <div class="flex items-center p-3 border border-border rounded-lg">
-                    <i class="fa-solid fa-utensils text-primary mr-3 text-xl"></i>
                     <div>
-                        <p class="font-medium">Cafeteria</p>
-                        <p class="text-sm text-gray-500">Employee dining area</p>
+                        <p class="text-sm text-gray-500">Responsible</p>
+                        <p class="font-medium">Michael Brown</p>
                     </div>
-                </div>
-                <div class="flex items-center p-3 border border-border rounded-lg">
-                    <i class="fa-solid fa-truck text-primary mr-3 text-xl"></i>
                     <div>
-                        <p class="font-medium">Loading Dock</p>
-                        <p class="text-sm text-gray-500">Main shipping area</p>
+                        <p class="text-sm text-gray-500">Due Date</p>
+                        <p class="font-medium">08/15/2023</p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Attached Files -->
+        <!-- Attachments -->
         <div class="bg-white rounded-lg shadow-sm border border-border p-6">
-            <h2 class="text-lg font-semibold text-primary mb-4">Attached Files</h2>
+            <h2 class="text-lg font-semibold text-primary mb-4 border-b pb-2">Attachments</h2>
             <div class="space-y-3">
                 <div class="flex items-center justify-between p-3 border border-border rounded-lg">
                     <div class="flex items-center">
